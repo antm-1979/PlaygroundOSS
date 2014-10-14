@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KLBTextureEditor_Plugin id="77132929-f76b-42ea-a1d0-6a87d68ff743">
+  <ProjectPropertyModel>
+    <Version>0.1.0</Version>
+    <ProjectFile>Texture2.xml</ProjectFile>
+    <ProjectFileRelativeDir />
+    <SaveDate>2014-10-06T16:24:44</SaveDate>
+    <EditState>true</EditState>
+    <ContainerScale>1</ContainerScale>
+    <ContainerSnap>8</ContainerSnap>
+    <VisibleGrid>true</VisibleGrid>
+    <VisibleBoundaryLine>true</VisibleBoundaryLine>
+    <VisibleImage>true</VisibleImage>
+    <VisibleMask>false</VisibleMask>
+    <VisiblePolygon>false</VisiblePolygon>
+    <VisibleProperty>true</VisibleProperty>
+    <VisibleBoundBox>false</VisibleBoundBox>
+    <VisibleCenterPoint>false</VisibleCenterPoint>
+    <Comment />
+  </ProjectPropertyModel>
+  <ContainerPropertyModel>
+    <Width>256</Width>
+    <Height>256</Height>
+    <PixelFormat>RGBA8888</PixelFormat>
+    <usePremultiply>false</usePremultiply>
+  </ContainerPropertyModel>
+  <ArrayOfTextureModel>
+    <TextureModel>
+      <Pos>
+        <X>0</X>
+        <Y>0</Y>
+      </Pos>
+      <Id>0</Id>
+      <Name>arrow.png</Name>
+      <IsFlipX>false</IsFlipX>
+      <IsFlipY>false</IsFlipY>
+      <IsSwitchXY>false</IsSwitchXY>
+      <ImgPathName>arrow.png</ImgPathName>
+      <ZOrder>0</ZOrder>
+    </TextureModel>
+  </ArrayOfTextureModel>
+  <ArrayOfT3DModel />
+</KLBTextureEditor_Plugin>
