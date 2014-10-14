@@ -79,6 +79,14 @@ CSockReadStream::sock_connect(const char *hostname, int port)
     return dstSocket;
 }
 
+int	CSockReadStream::sock_listen(unsigned port)
+{
+	int dstSocket;
+	u_long val = 1;
+	ioctlsocket(dstSocket, FIONBIO, &val);
+	return dstSocket;
+}
+
 bool
 CSockReadStream::setStatus()
 {
@@ -255,6 +263,20 @@ CSockReadStream::openStream(const char * sockName)
 	if( strHost ) { delete [] strHost; }
 
     return pStream;
+}
+
+CSockReadStream * CSockReadStream::listen(unsigned port)
+{
+	char * strHost = NULL;
+	char * strPort = NULL;
+	CSockReadStream * pStream = NULL;
+	pStream = new CSockReadStream();
+	int fd = pStream->sock_listen(port);
+	pStream->m_fd = fd;
+	pStream->m_writeStream = new CSockWriteStream(*pStream);
+	pStream->m_eStat = NORMAL;
+	pStream->listen(port);
+	return pStream;
 }
 
 

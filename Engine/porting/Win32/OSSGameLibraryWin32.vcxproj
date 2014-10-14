@@ -258,6 +258,7 @@
     <ClInclude Include="..\..\source\LuaLib\CKLBLuaLibKEY.h" />
     <ClInclude Include="..\..\source\LuaLib\CKLBLuaLibLANG.h" />
     <ClInclude Include="..\..\source\LuaLib\CKLBLuaLibMatrix.h" />
+    <ClInclude Include="..\..\source\LuaLib\CKLBLuaLibNET.h" />
     <ClInclude Include="..\..\source\LuaLib\CKLBLuaLibRES.h" />
     <ClInclude Include="..\..\source\LuaLib\CKLBLuaLibSOUND.h" />
     <ClInclude Include="..\..\source\LuaLib\CKLBLuaLibTASK.h" />
@@ -1344,6 +1345,7 @@
     <ClCompile Include="..\..\source\LuaLib\CKLBLuaLibKEY.cpp" />
     <ClCompile Include="..\..\source\LuaLib\CKLBLuaLibLANG.cpp" />
     <ClCompile Include="..\..\source\LuaLib\CKLBLuaLibMatrix.cpp" />
+    <ClCompile Include="..\..\source\LuaLib\CKLBLuaLibNET.cpp" />
     <ClCompile Include="..\..\source\LuaLib\CKLBLuaLibRES.cpp" />
     <ClCompile Include="..\..\source\LuaLib\CKLBLuaLibSOUND.cpp" />
     <ClCompile Include="..\..\source\LuaLib\CKLBLuaLibTASK.cpp" />
