@@ -22,10 +22,15 @@ end
 
 
 function OnListen()
-	syslog('----- Form.onBattle() -----')
+	NET_listen(9581)
+	syslog('----- OnListen() -----')
+
 	sysLoad("asset://MultiImgItem.lua")
 end
 
 function OnConnect()
-	syslog('----- Form.onContinue() -----')
+	str = sysCommand(pTB, UI_TEXTBOX_GETTEXT)
+
+	NET_connect(9581)
+	syslog('----- OnConnect() -----')
 end
