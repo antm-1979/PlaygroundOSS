@@ -30,6 +30,7 @@ end
 
 function OnConnect()
 	str = sysCommand(pTB, UI_TEXTBOX_GETTEXT)
+	NET_connect(str,9581)
 
 	NET_connect(9581)
 	syslog('----- OnConnect() -----')
