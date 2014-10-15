@@ -8,8 +8,8 @@
   <FormBounds xmlns:d1p1="http://schemas.datacontract.org/2004/07/System.Drawing">
     <d1p1:height>693</d1p1:height>
     <d1p1:width>1010</d1p1:width>
-    <d1p1:x>319</d1p1:x>
-    <d1p1:y>2</d1p1:y>
+    <d1p1:x>45</d1p1:x>
+    <d1p1:y>21</d1p1:y>
   </FormBounds>
   <GridSize>10</GridSize>
   <GuideForFourSplit>false</GuideForFourSplit>
@@ -80,7 +80,7 @@
         <rotation>0</rotation>
       </UINode>
       <UINode>
-        <name>textbox</name>
+        <name>textbox_target</name>
         <x>200</x>
         <y>270</y>
         <class>textbox</class>
@@ -106,7 +106,7 @@
             <y>270</y>
             <priority>4</priority>
             <class>label</class>
-            <text>Connect to target</text>
+            <text>Enter target ip</text>
             <fontname></fontname>
             <fontsize>20</fontsize>
             <_x0023_color xmlns:d6p1="http://www.w3.org/2001/XMLSchema" i:type="d6p1:int">-16776961</_x0023_color>

@@ -1,5 +1,5 @@
 function setup()
-	local pForm = UI_Form(nil,	-- arg[1]:	親となるUIタスクのポインタ
+	pForm = UI_Form(nil,	-- arg[1]:	親となるUIタスクのポインタ
 		7000,		-- arg[2]:	基準表示プライオリティ
 		0, 0,		-- arg[3,4]:	表示位置
 		"asset://first.json",	-- arg[5]:	composit jsonのパス
@@ -29,9 +29,8 @@ function OnListen()
 end
 
 function OnConnect()
-	str = sysCommand(pTB, UI_TEXTBOX_GETTEXT)
+	str = sysCommand(pForm, UI_FORM_UPDATE_NODE,"textbox_target",FORM_TEXT_GET)
 	NET_connect(str,9581)
 
-	NET_connect(9581)
 	syslog('----- OnConnect() -----')
 end
