@@ -1,4 +1,5 @@
 #include "CKLBLuaLibNET.h"
+//#include "CPFInterface.h"
 #include "CSockReadStream.h"
 #include "CSockWriteStream.h"
 #include "CKLBUtility.h"
@@ -8,9 +9,12 @@ static ILuaFuncLib::DEFCONST luaConst[] = {
 	{ 0, 0 }
 };
 
-static CKLBLuaLibNET libdef(luaConst);
 CSockReadStream *CKLBLuaLibNET::m_preadStream = nullptr;
 
+
+static CKLBLuaLibNET libdef(luaConst);
+
+//CKLBLibRegistrator::LIBREGISTSTRUCT* CKLBLuaLibNET::ms_libRegStruct = CKLBLibRegistrator::getInstance()->add("LibNetsock", CLS_KLBNETSOCK);
 
 
 
@@ -58,12 +62,16 @@ s32 CKLBLuaLibNET::luaListen(lua_State * L)
 	if (!m_preadStream)
 		m_preadStream = CSockReadStream::listen(port);
 
-	//const char * callback = lua.getString(1);
-	//SetCallBack(callback);
+	if (m_preadStream->getStatus() != IReadStream::NOT_FOUND)
+	{
+		lua.retBoolean(true);
+		return 1;
+	}
 
-	//lua.retDouble(width);
-	//lua.retDouble(height);
-	lua.retBoolean(true);
+	//fail operation
+	delete m_preadStream;
+	m_preadStream = nullptr;
+	lua.retBoolean(false);
 	return 1;
 }
 
@@ -133,17 +141,24 @@ s32 CKLBLuaLibNET::luaWrite(lua_State * L)
 	CLuaState lua(L);
 	int argc = lua.numArgs();
 	if (argc != 2) {
-		lua.retNil();
+		lua.retBoolean(false);
 		return 1;
 	}
 	int evt = lua.getInt(1);
 	int evtdata = lua.getInt(2);
 
+	IWriteStream * ws = m_preadStream->getWriteStream();
+	if (!ws)
+	{
+		lua.retBoolean(false);
+		return 1;
+	}
+
 	char data[4096];
 	*(int *)data = evt;
 	*(int *)(data + 4) = evtdata;
-	m_preadStream->getWriteStream()->writeBlock(data, 8);
-	m_preadStream->getStatus() == IWriteStream::CAN_NOT_WRITE;
+	ws->writeBlock(data, 8);
+	ws->getStatus() == IWriteStream::CAN_NOT_WRITE;
 	lua.retBoolean(true);
 	return 1;
 }
