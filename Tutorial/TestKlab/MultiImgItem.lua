@@ -69,6 +69,10 @@ function execute(deltaT)
 	if(prop.x>=0 and prop.x < screen.width - picwidth and prop.y>=0 and prop.y<screen.height - picheight ) then
 		TASK_setProperty(pMIT, prop)	
 	end
+
+
+	event,evtdt=NET_readEvent();
+
 end
 
 

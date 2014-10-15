@@ -81,7 +81,23 @@ CSockReadStream::sock_connect(const char *hostname, int port)
 
 int	CSockReadStream::sock_listen(unsigned port)
 {
-	int dstSocket;
+	int dstSocket, listenfd;
+
+	struct sockaddr_in server;
+	struct sockaddr_in client;
+
+	listenfd = socket(AF_INET, SOCK_STREAM, 0);
+
+	server.sin_family = PF_INET;
+	server.sin_addr.S_un.S_addr = INADDR_ANY;
+	server.sin_port = htons(port);
+
+	SOCKET  acceptfd;
+	int size;
+	bind(listenfd, (struct sockaddr *)&server, sizeof(server));
+	::listen(listenfd, 5);
+	dstSocket = accept(listenfd, (sockaddr *)&client, &size);
+
 	u_long val = 1;
 	ioctlsocket(dstSocket, FIONBIO, &val);
 	return dstSocket;
@@ -272,10 +288,13 @@ CSockReadStream * CSockReadStream::listen(unsigned port)
 	CSockReadStream * pStream = NULL;
 	pStream = new CSockReadStream();
 	int fd = pStream->sock_listen(port);
+
+
 	pStream->m_fd = fd;
 	pStream->m_writeStream = new CSockWriteStream(*pStream);
 	pStream->m_eStat = NORMAL;
-	pStream->listen(port);
+
+
 	return pStream;
 }
 

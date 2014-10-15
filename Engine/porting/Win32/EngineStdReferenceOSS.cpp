@@ -141,6 +141,8 @@ bool EngineTaskReference()
 #include "CKLBScrMgrSolid.h"
 #include "CKLBTexturePacker.h"
 
+#include "CKLBLuaLibNET.h"
+
 bool EngineLuaFuncReference()
 {
 	bool bResult = true;
@@ -164,6 +166,7 @@ bool EngineLuaFuncReference()
 	bResult = bResult && getFuncRegister<CKLBLuaLibUI>();
 	bResult = bResult && getFuncRegister<CKLBLuaLibUPDATE>();
 	bResult = bResult && getFuncRegister<CKLBLuaLibPackerControl>();
+	bResult = bResult && getFuncRegister<CKLBLuaLibNET>();
 	bResult = bResult && (0 != CKLBAppScriptIF::setValue);
 
 	return bResult;
