@@ -110,7 +110,7 @@ CSockReadStream::sock_listen(unsigned port)
         close(s);
         return(-1);
     }
-    listen(s, 5);
+    ::listen(s, 5);
     int t;
     for (unsigned i = 0; hp->h_addr_list[i]; i++)
     {
