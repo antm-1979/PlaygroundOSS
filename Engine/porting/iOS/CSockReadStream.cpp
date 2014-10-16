@@ -80,13 +80,51 @@ CSockReadStream::sock_connect(const char *hostname, int port)
     // 接続
     if(0 > connect(dstSocket, (struct sockaddr *)&dstAddr, sizeof(dstAddr))) {
         close(dstSocket);
-        return -1;
+        	return -1;
     }
     // 取得したディスクリプタは、ノンブロックモードにて運用する。
     int flags = fcntl(dstSocket, F_GETFL, 0);
     fcntl(dstSocket, F_SETFL, flags | O_NONBLOCK);
 
     return dstSocket;
+}
+
+
+int
+CSockReadStream::sock_listen(unsigned port)
+{
+    char   myname[129];
+    int    s;
+    struct sockaddr_in sa;
+    struct hostent *hp;
+    memset(&sa, 0, sizeof(struct sockaddr_in));
+    gethostname(myname, sizeof(myname));
+    hp = gethostbyname(myname);
+    if (hp == NULL)
+        return(-1);
+    sa.sin_family = hp->h_addrtype;
+    sa.sin_port = htons(port);
+    if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+        return(-1);
+    if (bind(s, (sockaddr *)&sa, sizeof(struct sockaddr_in)) < 0) {
+        close(s);
+        return(-1);
+    }
+    listen(s, 5);
+    int t;
+    for (unsigned i = 0; hp->h_addr_list[i]; i++)
+    {
+        char* ip = inet_ntoa(*(struct in_addr*)hp->h_addr_list[i]);
+        char buf[1024];
+        sprintf(buf, "%s", ip);
+        t = t;
+    }
+    if ((t = accept(s, NULL, NULL)) < 0)
+        return(-1);
+    
+    return(s);
+
+
 }
 
 bool
@@ -276,8 +314,12 @@ CSockReadStream::openStream(const char * sockName)
     return pStream;
 }
 
+CSockReadStream *
+CSockReadStream::listen(unsigned port)
+{
+}
 
-s32  
+s32
 CSockReadStream::getSize()
 {
     m_eStat = NORMAL;

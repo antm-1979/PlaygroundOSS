@@ -45,7 +45,7 @@ public:
     // このクラスメソッドはプラットフォーム側のために用意され、ゲーム側では IReadStream のポインタとして
     // 扱われるため、このメソッドを扱うことは出来ない(可能ではあるが推奨されない)
     static CSockReadStream * openStream(const char * path);
-    
+    static  CSockReadStream *  listen(unsigned port);
 
     s32     getSize();
     s32     getPosition();
@@ -63,6 +63,7 @@ public:
     IWriteStream * getWriteStream();
 private:
     int     sock_connect(const char * hostname, int port);
+    int     sock_listen(unsigned port);
     bool    readRingBuf();
     bool    requestData(unsigned char * buf, size_t size);
     bool    setStatus();
