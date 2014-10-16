@@ -81,26 +81,50 @@ CSockReadStream::sock_connect(const char *hostname, int port)
 
 int	CSockReadStream::sock_listen(unsigned port)
 {
-	int dstSocket, listenfd;
+	SOCKET        sListen,sClient;
+	int           iAddrSize;
+	struct sockaddr_in local,client;
 
-	struct sockaddr_in server;
-	struct sockaddr_in client;
+	sListen = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
+	if (sListen == SOCKET_ERROR)
+	{
+		//printf("socket() failed: %d\n", WSAGetLastError());
+		return SOCKET_ERROR;
+	}
 
-	listenfd = socket(AF_INET, SOCK_STREAM, 0);
+	local.sin_addr.s_addr = htonl(INADDR_ANY);
+	local.sin_family = AF_INET;
+	local.sin_port = htons(port);
 
-	server.sin_family = PF_INET;
-	server.sin_addr.S_un.S_addr = INADDR_ANY;
-	server.sin_port = htons(port);
+	if (bind(sListen, (struct sockaddr *)&local,sizeof(local)) == SOCKET_ERROR)
+	{
+		//printf("bind() failed: %d\n", WSAGetLastError());
+		return SOCKET_ERROR;
+	}
+	::listen(sListen, 8);
 
-	SOCKET  acceptfd;
-	int size;
-	bind(listenfd, (struct sockaddr *)&server, sizeof(server));
-	::listen(listenfd, 5);
-	dstSocket = accept(listenfd, (sockaddr *)&client, &size);
+	u_long NonBlock;
+	while (1)
+	{
+		iAddrSize = sizeof(client);
+		sClient = accept(sListen, (struct sockaddr *)&client,&iAddrSize);
+		if (sClient == INVALID_SOCKET)
+		{
+			//printf("accept() failed: %d\n", WSAGetLastError());
+			return SOCKET_ERROR;
+		}
+		//printf("Accepted client: %s:%d\n",
+		//	inet_ntoa(client.sin_addr), ntohs(client.sin_port));
+		NonBlock = 1;
+		if (ioctlsocket(sClient, FIONBIO, &NonBlock) == SOCKET_ERROR)
+		{
+			//printf("ioctlsocket() failed with error %d\n", WSAGetLastError());
+			return SOCKET_ERROR;
+		}
+		return sClient;
 
-	u_long val = 1;
-	ioctlsocket(dstSocket, FIONBIO, &val);
-	return dstSocket;
+	}
+
 }
 
 bool
@@ -284,11 +308,14 @@ CSockReadStream::openStream(const char * sockName)
 CSockReadStream * CSockReadStream::listen(unsigned port)
 {
 	char * strHost = NULL;
-	char * strPort = NULL;
 	CSockReadStream * pStream = NULL;
 	pStream = new CSockReadStream();
 	int fd = pStream->sock_listen(port);
-
+	if (fd < 0)
+	{
+		pStream->m_eStat = NOT_FOUND;
+		return pStream;
+	}
 
 	pStream->m_fd = fd;
 	pStream->m_writeStream = new CSockWriteStream(*pStream);
@@ -296,6 +323,22 @@ CSockReadStream * CSockReadStream::listen(unsigned port)
 
 
 	return pStream;
+}
+
+s32 CSockReadStream:: getHostIp(char *ipaddr)
+{
+	char   myname[128];
+	gethostname(myname, 128);
+	hostent *hp = gethostbyname(myname);
+	if (hp == NULL)
+		return(-1);
+	for (unsigned i = 0; hp->h_addr_list[i]; i++)
+	{
+		char* ip = inet_ntoa(*(struct in_addr*)hp->h_addr_list[i]);
+		sprintf(ipaddr, "%s", ip);
+		return 0;
+	}
+
 }
 
 

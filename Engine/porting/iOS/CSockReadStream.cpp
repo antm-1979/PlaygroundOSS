@@ -317,6 +317,41 @@ CSockReadStream::openStream(const char * sockName)
 CSockReadStream *
 CSockReadStream::listen(unsigned port)
 {
+	char * strHost = NULL;
+	CSockReadStream * pStream = NULL;
+	pStream = new CSockReadStream();
+	int fd = pStream->sock_listen(port);
+	if (fd < 0)
+	{
+		pStream->m_eStat = NOT_FOUND;
+		return pStream;
+	}
+
+	pStream->m_fd = fd;
+	pStream->m_writeStream = new CSockWriteStream(*pStream);
+	pStream->m_eStat = NORMAL;
+
+
+	return pStream;
+}
+
+void
+CSockReadStream::getHostIp(char *buf)
+{
+	char   myname[129];
+	int    s;
+	struct sockaddr_in sa;
+	struct hostent *hp;
+	gethostname(myname, sizeof(myname));
+	hp = gethostbyname(myname);
+	if (hp == NULL)
+		return(-1);
+	int t;
+	for (unsigned i = 0; hp->h_addr_list[i]; i++)
+	{
+		char* ip = inet_ntoa(*(struct in_addr*)hp->h_addr_list[i]);
+		sprintf(buf, "%s", ip);
+	}
 }
 
 s32

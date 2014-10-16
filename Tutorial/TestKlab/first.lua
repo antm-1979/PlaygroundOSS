@@ -10,6 +10,8 @@ function setup()
 		省略した場合は false と同じ挙動になります。
 	]]
 	
+	local hostip = NET_getHostIp()
+	sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_Address",FORM_LBL_SET_TEXT,hostip)
 	TASK_StageOnly(pForm)
 end
 
@@ -31,6 +33,7 @@ end
 function OnConnect()
 	str = sysCommand(pForm, UI_FORM_UPDATE_NODE,"textbox_target",FORM_TEXT_GET)
 	NET_connect(str,9581)
-
 	syslog('----- OnConnect() -----')
+
+	sysLoad("asset://MultiImgItem.lua")
 end

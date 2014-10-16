@@ -17,10 +17,18 @@ function setup()
       "asset://walk_frame_0013.png.imag",
       "asset://walk_frame_0014.png.imag"
    }
+	
 	pMIT = UI_MultiImgItem( nil, 7000, 500, 500, pAssetList, 0)
-	picwidth,picheight=ASSET_getImageSize("asset://walk_frame_0001.png.imag")
-	orientation = 1
-	bnorit = true
+	picwidth,picheight = ASSET_getImageSize("asset://walk_frame_0001.png.imag")
+	orientation = 1		--control people orientation
+	bnorit = true		--picture animation start index get from people orientation
+
+	pMITother = UI_MultiImgItem( nil, 7000, 500, 500, pAssetList, 0)
+	picwidth,picheight = ASSET_getImageSize("asset://walk_frame_0001.png.imag")
+	orientation2 = 1		--control people orientation
+	bnorit2 = true		--picture animation start index get from people orientation
+
+
    
    	pSimpleItem = UI_SimpleItem(	nil,							-- arg[1]:		ÓH¤È¤Ê¤ëUI¥¿¥¹¥¯¥Ý¥¤¥ó¥¿
 									7000,							-- arg[2]:		±íÊ¾¥×¥é¥¤¥ª¥ê¥Æ¥£
@@ -35,7 +43,9 @@ end
 
 function execute(deltaT)
 	count = count + 1
+	--local item
 	--animation
+	local idx
 	if count % 3 == 0 then
 		prop = TASK_getProperty(pMIT)
 		idx = prop.index
@@ -43,10 +53,8 @@ function execute(deltaT)
 		idx = idx % 7
 		if orientation == 1 then
 			sysCommand(pMIT, UI_MULTIIMG_SET_INDEX, idx)
-			--syslog(string.format("CMD UI_MULTIIMG_SET_INDEX = %i", idx))
 		elseif orienttation == 3 then
 			sysCommand(pMIT, UI_MULTIIMG_SET_INDEX, idx+7)
-			--syslog(string.format("CMD UI_MULTIIMG_SET_INDEX = %i", idx+7))
 		elseif bnorit == true then
 			sysCommand(pMIT, UI_MULTIIMG_SET_INDEX, idx)
 		else
@@ -64,15 +72,41 @@ function execute(deltaT)
 	elseif orientation == 4 then
 		prop.y = prop.y - 1
 	end
-	screen=sysInfo()
+	screen = sysInfo()
 	
-	if(prop.x>=0 and prop.x < screen.width - picwidth and prop.y>=0 and prop.y<screen.height - picheight ) then
+	if(prop.x>=0 and prop.x < screen.width - picwidth and prop.y >= 0 and prop.y < screen.height - picheight ) then
 		TASK_setProperty(pMIT, prop)	
 	end
 
 
-	event,evtdt=NET_readEvent();
+	--net item
+	if count % 3 == 0 then
+		event,evtdt = NET_readEvent();
+		if (event == 1) then
+			if (evtdt >4 ) then
+				orientation2 = evtdt - 4
+				bnorit2 = true
+			else
+				orientation2 = evtdt
+				bnorit2 = false
+			end
+		end
 
+		prop = TASK_getProperty(pMITother)
+		idx = prop.index
+		idx = idx + 1
+		idx = idx % 7
+		if orientation == 1 then
+			sysCommand(pMITother, UI_MULTIIMG_SET_INDEX, idx)
+		elseif orienttation == 3 then
+			sysCommand(pMITother, UI_MULTIIMG_SET_INDEX, idx+7)
+		elseif bnorit2 == true then
+			sysCommand(pMITother, UI_MULTIIMG_SET_INDEX, idx)
+		else
+			sysCommand(pMITother, UI_MULTIIMG_SET_INDEX, idx+7)
+		end
+
+	end
 end
 
 
@@ -81,29 +115,34 @@ end
 
 
 function callback_TP(tbl)
+	local idx
 	for idx,item in pairs(tbl) do
 		if item.type == PAD_ITEM_TAP then
 			--adjust orientation
 			if item.x >= 256 then return end
 			if item.y >= 256 then return end
 			--syslog(string.format("touch postion = %i %i ", item.x,item.y))
-			local centx = item.x-128
-			local centy = item.y-128
+			local centx = item.x - 128
+			local centy = item.y - 128
 			local fabcentx = centx
 			local fabcenty = centy
-			if fabcentx<0 then fabcentx = -fabcentx end
-			if fabcenty<0 then fabcenty = -fabcenty end
-			if centx>=0 and fabcenty < centx then
+			if fabcentx < 0 then fabcentx = -fabcentx end
+			if fabcenty < 0 then fabcenty = -fabcenty end
+			if centx >= 0 and fabcenty < centx then
 				orientation = 1
 				bnorit = true
-			elseif centy>=0 and centy > fabcentx then
+			elseif centy >= 0 and centy > fabcentx then
 				orientation = 2
-			elseif centx<0 and fabcenty < -centx then
+			elseif centx < 0 and fabcenty < -centx then
 				orientation = 3
 				bnorit = false
 			elseif centy<0 and -centy > fabcentx then
 				orientation = 4
 			end
+			local evtdata = orientation
+			if(bnorit)
+				evtdata = evtdata + 4
+			NET_writeEvent(1,evtdata)
 		end
 	end
 end

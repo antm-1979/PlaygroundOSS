@@ -40,7 +40,7 @@ public:
 
     static CSockReadStream * openStream(const char * path);
 	static CSockReadStream * listen(unsigned port);
-
+	static s32 getHostIp(char *ipaddr);
 
     s32     getSize		();
     s32     getPosition	();

@@ -10,6 +10,7 @@ static ILuaFuncLib::DEFCONST luaConst[] = {
 };
 
 CSockReadStream *CKLBLuaLibNET::m_preadStream = nullptr;
+static char *m_callback = nullptr;
 
 
 static CKLBLuaLibNET libdef(luaConst);
@@ -20,26 +21,25 @@ static CKLBLuaLibNET libdef(luaConst);
 
 CKLBLuaLibNET::CKLBLuaLibNET(DEFCONST * arrConstDef) : ILuaFuncLib(arrConstDef)
 {
-	//m_preadStream = nullptr;
-	//m_callback = nullptr;
 }
 
 CKLBLuaLibNET::~CKLBLuaLibNET()
 {
-	//if (m_callback) { KLBDELETEA(m_callback); }
+	if (m_callback) { KLBDELETEA(m_callback); }
 }
 
 void CKLBLuaLibNET::addLibrary()
 {
+	addFunction("NET_getHostIp", CKLBLuaLibNET::luaGetHostIp);
 	addFunction("NET_listen", CKLBLuaLibNET::luaListen);
 	addFunction("NET_connect", CKLBLuaLibNET::luaConnect);
 	addFunction("NET_readEvent", CKLBLuaLibNET::luaRead);
 	addFunction("NET_writeEvent", CKLBLuaLibNET::luaWrite);
 }
 
-//void CKLBLuaLibNET::SetCallBack(const char *callback)
+//void CKLBLuaLibNET::SetCallBack(unsigned i,const char *callback)
 //{
-//	const char * funcname = lua.getString(2);
+//	const char * funcname = lua.getString(i);
 //	const char * str = NULL;
 //	if (callback) {
 //		str = CKLBUtility::copyString(funcname);
@@ -72,6 +72,15 @@ s32 CKLBLuaLibNET::luaListen(lua_State * L)
 	delete m_preadStream;
 	m_preadStream = nullptr;
 	lua.retBoolean(false);
+	return 1;
+}
+
+s32 CKLBLuaLibNET::luaGetHostIp(lua_State * L)
+{
+	CLuaState lua(L);
+	char buf[128];
+	CSockReadStream::getHostIp(buf);
+	lua.retString(buf);
 	return 1;
 }
 

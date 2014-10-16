@@ -46,6 +46,7 @@ public:
     // 扱われるため、このメソッドを扱うことは出来ない(可能ではあるが推奨されない)
     static CSockReadStream * openStream(const char * path);
     static  CSockReadStream *  listen(unsigned port);
+	static void getHostIp(char *IpAddress);
 
     s32     getSize();
     s32     getPosition();
