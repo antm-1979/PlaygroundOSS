@@ -129,7 +129,7 @@ s32 CKLBLuaLibNET::luaRead(lua_State * L)
 	if (m_preadStream->getStatus() == IReadStream::CLOSED)
 	{
 		lua.retBoolean(false);
-		lua.retNil();
+		lua.retNil();//to do here
 		lua.retNil();
 		return 3;
 	}
@@ -139,9 +139,18 @@ s32 CKLBLuaLibNET::luaRead(lua_State * L)
 	{
 		m_preadStream->readBlock(data, len);
 	}
-	lua.retBoolean(true);
-	lua.retInt(*(int *)data);
-	lua.retInt(*(int *)(data+4));
+	if (len)
+	{
+		lua.retBoolean(true);
+		lua.retInt(*(int *)data);
+		lua.retInt(*(int *)(data + 4));
+	}
+	else
+	{
+		lua.retBoolean(false);
+		lua.retNil();
+		lua.retNil();
+	}
 	return 3;
 }
 
@@ -167,7 +176,6 @@ s32 CKLBLuaLibNET::luaWrite(lua_State * L)
 	*(int *)data = evt;
 	*(int *)(data + 4) = evtdata;
 	ws->writeBlock(data, 8);
-	ws->getStatus() == IWriteStream::CAN_NOT_WRITE;
-	lua.retBoolean(true);
+	lua.retBoolean(ws->getStatus() != IWriteStream::CAN_NOT_WRITE);
 	return 1;
 }

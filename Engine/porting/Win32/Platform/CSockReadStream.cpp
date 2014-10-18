@@ -325,7 +325,7 @@ CSockReadStream * CSockReadStream::listen(unsigned port)
 	return pStream;
 }
 
-s32 CSockReadStream:: getHostIp(char *ipaddr)
+s32 CSockReadStream::getHostIp(char *ipaddr)
 {
 	char   myname[128];
 	gethostname(myname, 128);
