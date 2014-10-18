@@ -140,8 +140,9 @@ function callback_TP(tbl)
 				orientation = 4
 			end
 			local evtdata = orientation
-			if(bnorit)
+			if(bnorit) then
 				evtdata = evtdata + 4
+			end
 			NET_writeEvent(1,evtdata)
 		end
 	end
