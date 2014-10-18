@@ -10,7 +10,6 @@
 		17729FCE17C316F400D4E765 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17729FCD17C316F400D4E765 /* Default-568h@2x.png */; };
 		17729FD517C3216A00D4E765 /* CSampleProjectEntrance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17729FCF17C31E2000D4E765 /* CSampleProjectEntrance.cpp */; };
 		3287A67E174C699300DF0E35 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = 3287A67C174C699300DF0E35 /* utf8.c */; };
-		3287AAB1174C88B900DF0E35 /* MTLmr3m.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3287AAB0174C88B900DF0E35 /* MTLmr3m.ttf */; };
 		3287AC7B174C90D700DF0E35 /* autofit.c in Sources */ = {isa = PBXBuildFile; fileRef = 3287AAD1174C90D500DF0E35 /* autofit.c */; };
 		3287AC82174C90D700DF0E35 /* ftbase.c in Sources */ = {isa = PBXBuildFile; fileRef = 3287AADA174C90D600DF0E35 /* ftbase.c */; };
 		3287AC83174C90D700DF0E35 /* ftbbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 3287AADC174C90D600DF0E35 /* ftbbox.c */; };
@@ -271,6 +270,33 @@
 		8EFEBE8615FEEAF3003EB0DF /* CKLBPauseCtrl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFEBE8415FEEAF3003EB0DF /* CKLBPauseCtrl.cpp */; };
 		B0A50A80153425AE008CCF28 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A50A7F153425AE008CCF28 /* Default@2x.png */; };
 		B1B806D7152C416300A8717A /* CKLBUISimpleItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1B806D5152C416300A8717A /* CKLBUISimpleItem.cpp */; };
+		EBB75E4319F2074C00B4D8DB /* Alex Brush SIL OFL Font License 1.1.txt in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E2919F2074B00B4D8DB /* Alex Brush SIL OFL Font License 1.1.txt */; };
+		EBB75E4419F2074C00B4D8DB /* AlexBrush-Regular-OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E2A19F2074B00B4D8DB /* AlexBrush-Regular-OTF.otf */; };
+		EBB75E4519F2074C00B4D8DB /* arrow.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E2B19F2074B00B4D8DB /* arrow.png.imag */; };
+		EBB75E4619F2074C00B4D8DB /* Button.texb in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E2C19F2074B00B4D8DB /* Button.texb */; };
+		EBB75E4719F2074C00B4D8DB /* Connect.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E2D19F2074B00B4D8DB /* Connect.png.imag */; };
+		EBB75E4819F2074C00B4D8DB /* first.json in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E2E19F2074B00B4D8DB /* first.json */; };
+		EBB75E4919F2074C00B4D8DB /* first.lua in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E2F19F2074B00B4D8DB /* first.lua */; };
+		EBB75E4A19F2074C00B4D8DB /* Listen.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3019F2074B00B4D8DB /* Listen.png.imag */; };
+		EBB75E4B19F2074C00B4D8DB /* MultiImgItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3119F2074B00B4D8DB /* MultiImgItem.lua */; };
+		EBB75E4C19F2074C00B4D8DB /* start.lua in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3219F2074B00B4D8DB /* start.lua */; };
+		EBB75E4D19F2074C00B4D8DB /* texture.texb in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3319F2074B00B4D8DB /* texture.texb */; };
+		EBB75E4E19F2074C00B4D8DB /* Texture2.texb in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3419F2074B00B4D8DB /* Texture2.texb */; };
+		EBB75E4F19F2074C00B4D8DB /* walk_frame_0001.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3519F2074B00B4D8DB /* walk_frame_0001.png.imag */; };
+		EBB75E5019F2074C00B4D8DB /* walk_frame_0002.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3619F2074B00B4D8DB /* walk_frame_0002.png.imag */; };
+		EBB75E5119F2074C00B4D8DB /* walk_frame_0003.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3719F2074B00B4D8DB /* walk_frame_0003.png.imag */; };
+		EBB75E5219F2074C00B4D8DB /* walk_frame_0004.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3819F2074B00B4D8DB /* walk_frame_0004.png.imag */; };
+		EBB75E5319F2074C00B4D8DB /* walk_frame_0005.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3919F2074B00B4D8DB /* walk_frame_0005.png.imag */; };
+		EBB75E5419F2074C00B4D8DB /* walk_frame_0006.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3A19F2074B00B4D8DB /* walk_frame_0006.png.imag */; };
+		EBB75E5519F2074C00B4D8DB /* walk_frame_0007.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3B19F2074B00B4D8DB /* walk_frame_0007.png.imag */; };
+		EBB75E5619F2074C00B4D8DB /* walk_frame_0008.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3C19F2074B00B4D8DB /* walk_frame_0008.png.imag */; };
+		EBB75E5719F2074C00B4D8DB /* walk_frame_0009.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3D19F2074B00B4D8DB /* walk_frame_0009.png.imag */; };
+		EBB75E5819F2074C00B4D8DB /* walk_frame_0010.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3E19F2074B00B4D8DB /* walk_frame_0010.png.imag */; };
+		EBB75E5919F2074C00B4D8DB /* walk_frame_0011.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E3F19F2074B00B4D8DB /* walk_frame_0011.png.imag */; };
+		EBB75E5A19F2074C00B4D8DB /* walk_frame_0012.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E4019F2074B00B4D8DB /* walk_frame_0012.png.imag */; };
+		EBB75E5B19F2074C00B4D8DB /* walk_frame_0013.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E4119F2074B00B4D8DB /* walk_frame_0013.png.imag */; };
+		EBB75E5C19F2074C00B4D8DB /* walk_frame_0014.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E4219F2074C00B4D8DB /* walk_frame_0014.png.imag */; };
+		EBB75E5E19F2090500B4D8DB /* CKLBLuaLibNET.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB75E5D19F2090400B4D8DB /* CKLBLuaLibNET.cpp */; };
 		FC6CF6F116DEF37B0098802F /* encryptFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC6CF6F016DEF37B0098802F /* encryptFile.cpp */; };
 		FCCFA67816A933F1001FAE7B /* glWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCFA67616A933F1001FAE7B /* glWrapper.cpp */; };
 		FCD31D7516AFC6CA00BBDC8F /* CiOSWidget.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCD31D7416AFC6CA00BBDC8F /* CiOSWidget.mm */; };
@@ -373,7 +399,6 @@
 		3287AA5D174C760200DF0E35 /* tttags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tttags.h; sourceTree = "<group>"; };
 		3287AA5E174C760200DF0E35 /* ttunpat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttunpat.h; sourceTree = "<group>"; };
 		3287AA5F174C760200DF0E35 /* ft2build.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ft2build.h; sourceTree = "<group>"; };
-		3287AAB0174C88B900DF0E35 /* MTLmr3m.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MTLmr3m.ttf; path = ../../../../fonts/MTLmr3m.ttf; sourceTree = "<group>"; };
 		3287AAD1174C90D500DF0E35 /* autofit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = autofit.c; sourceTree = "<group>"; };
 		3287AADA174C90D600DF0E35 /* ftbase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ftbase.c; sourceTree = "<group>"; };
 		3287AADC174C90D600DF0E35 /* ftbbox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ftbbox.c; sourceTree = "<group>"; };
@@ -847,6 +872,34 @@
 		B0A50A7F153425AE008CCF28 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B1B806D5152C416300A8717A /* CKLBUISimpleItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CKLBUISimpleItem.cpp; sourceTree = "<group>"; };
 		B1B806D6152C416300A8717A /* CKLBUISimpleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKLBUISimpleItem.h; sourceTree = "<group>"; };
+		EBB75E2919F2074B00B4D8DB /* Alex Brush SIL OFL Font License 1.1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Alex Brush SIL OFL Font License 1.1.txt"; sourceTree = "<group>"; };
+		EBB75E2A19F2074B00B4D8DB /* AlexBrush-Regular-OTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlexBrush-Regular-OTF.otf"; sourceTree = "<group>"; };
+		EBB75E2B19F2074B00B4D8DB /* arrow.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = arrow.png.imag; sourceTree = "<group>"; };
+		EBB75E2C19F2074B00B4D8DB /* Button.texb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Button.texb; sourceTree = "<group>"; };
+		EBB75E2D19F2074B00B4D8DB /* Connect.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = Connect.png.imag; sourceTree = "<group>"; };
+		EBB75E2E19F2074B00B4D8DB /* first.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = first.json; sourceTree = "<group>"; };
+		EBB75E2F19F2074B00B4D8DB /* first.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = first.lua; sourceTree = "<group>"; };
+		EBB75E3019F2074B00B4D8DB /* Listen.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = Listen.png.imag; sourceTree = "<group>"; };
+		EBB75E3119F2074B00B4D8DB /* MultiImgItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiImgItem.lua; sourceTree = "<group>"; };
+		EBB75E3219F2074B00B4D8DB /* start.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.lua; sourceTree = "<group>"; };
+		EBB75E3319F2074B00B4D8DB /* texture.texb */ = {isa = PBXFileReference; lastKnownFileType = file; path = texture.texb; sourceTree = "<group>"; };
+		EBB75E3419F2074B00B4D8DB /* Texture2.texb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Texture2.texb; sourceTree = "<group>"; };
+		EBB75E3519F2074B00B4D8DB /* walk_frame_0001.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0001.png.imag; sourceTree = "<group>"; };
+		EBB75E3619F2074B00B4D8DB /* walk_frame_0002.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0002.png.imag; sourceTree = "<group>"; };
+		EBB75E3719F2074B00B4D8DB /* walk_frame_0003.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0003.png.imag; sourceTree = "<group>"; };
+		EBB75E3819F2074B00B4D8DB /* walk_frame_0004.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0004.png.imag; sourceTree = "<group>"; };
+		EBB75E3919F2074B00B4D8DB /* walk_frame_0005.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0005.png.imag; sourceTree = "<group>"; };
+		EBB75E3A19F2074B00B4D8DB /* walk_frame_0006.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0006.png.imag; sourceTree = "<group>"; };
+		EBB75E3B19F2074B00B4D8DB /* walk_frame_0007.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0007.png.imag; sourceTree = "<group>"; };
+		EBB75E3C19F2074B00B4D8DB /* walk_frame_0008.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0008.png.imag; sourceTree = "<group>"; };
+		EBB75E3D19F2074B00B4D8DB /* walk_frame_0009.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0009.png.imag; sourceTree = "<group>"; };
+		EBB75E3E19F2074B00B4D8DB /* walk_frame_0010.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0010.png.imag; sourceTree = "<group>"; };
+		EBB75E3F19F2074B00B4D8DB /* walk_frame_0011.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0011.png.imag; sourceTree = "<group>"; };
+		EBB75E4019F2074B00B4D8DB /* walk_frame_0012.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0012.png.imag; sourceTree = "<group>"; };
+		EBB75E4119F2074B00B4D8DB /* walk_frame_0013.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0013.png.imag; sourceTree = "<group>"; };
+		EBB75E4219F2074C00B4D8DB /* walk_frame_0014.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0014.png.imag; sourceTree = "<group>"; };
+		EBB75E5D19F2090400B4D8DB /* CKLBLuaLibNET.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CKLBLuaLibNET.cpp; sourceTree = "<group>"; };
+		EBB75E5F19F2091100B4D8DB /* CKLBLuaLibNET.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKLBLuaLibNET.h; sourceTree = "<group>"; };
 		FC6CF6F016DEF37B0098802F /* encryptFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = encryptFile.cpp; sourceTree = "<group>"; };
 		FC6CF6F416DEF3890098802F /* encryptFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = encryptFile.h; path = ../source/include/encryptFile.h; sourceTree = "<group>"; };
 		FCCFA67616A933F1001FAE7B /* glWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glWrapper.cpp; sourceTree = "<group>"; };
@@ -1372,7 +1425,32 @@
 		8E3CEEF8152C3775008C7EC1 /* ProjectResources */ = {
 			isa = PBXGroup;
 			children = (
-				3287AAB0174C88B900DF0E35 /* MTLmr3m.ttf */,
+				EBB75E2919F2074B00B4D8DB /* Alex Brush SIL OFL Font License 1.1.txt */,
+				EBB75E2A19F2074B00B4D8DB /* AlexBrush-Regular-OTF.otf */,
+				EBB75E2B19F2074B00B4D8DB /* arrow.png.imag */,
+				EBB75E2C19F2074B00B4D8DB /* Button.texb */,
+				EBB75E2D19F2074B00B4D8DB /* Connect.png.imag */,
+				EBB75E2E19F2074B00B4D8DB /* first.json */,
+				EBB75E2F19F2074B00B4D8DB /* first.lua */,
+				EBB75E3019F2074B00B4D8DB /* Listen.png.imag */,
+				EBB75E3119F2074B00B4D8DB /* MultiImgItem.lua */,
+				EBB75E3219F2074B00B4D8DB /* start.lua */,
+				EBB75E3319F2074B00B4D8DB /* texture.texb */,
+				EBB75E3419F2074B00B4D8DB /* Texture2.texb */,
+				EBB75E3519F2074B00B4D8DB /* walk_frame_0001.png.imag */,
+				EBB75E3619F2074B00B4D8DB /* walk_frame_0002.png.imag */,
+				EBB75E3719F2074B00B4D8DB /* walk_frame_0003.png.imag */,
+				EBB75E3819F2074B00B4D8DB /* walk_frame_0004.png.imag */,
+				EBB75E3919F2074B00B4D8DB /* walk_frame_0005.png.imag */,
+				EBB75E3A19F2074B00B4D8DB /* walk_frame_0006.png.imag */,
+				EBB75E3B19F2074B00B4D8DB /* walk_frame_0007.png.imag */,
+				EBB75E3C19F2074B00B4D8DB /* walk_frame_0008.png.imag */,
+				EBB75E3D19F2074B00B4D8DB /* walk_frame_0009.png.imag */,
+				EBB75E3E19F2074B00B4D8DB /* walk_frame_0010.png.imag */,
+				EBB75E3F19F2074B00B4D8DB /* walk_frame_0011.png.imag */,
+				EBB75E4019F2074B00B4D8DB /* walk_frame_0012.png.imag */,
+				EBB75E4119F2074B00B4D8DB /* walk_frame_0013.png.imag */,
+				EBB75E4219F2074C00B4D8DB /* walk_frame_0014.png.imag */,
 			);
 			name = ProjectResources;
 			sourceTree = "<group>";
@@ -1868,6 +1946,8 @@
 		8EA65E14155D0FF00066E306 /* LuaLib */ = {
 			isa = PBXGroup;
 			children = (
+				EBB75E5F19F2091100B4D8DB /* CKLBLuaLibNET.h */,
+				EBB75E5D19F2090400B4D8DB /* CKLBLuaLibNET.cpp */,
 				6FFE230C176B0639003B3F9F /* CKLBLuaLibHASH.cpp */,
 				6FFE230D176B0639003B3F9F /* CKLBLuaLibHASH.h */,
 				8EC9671415AD6899008FCDEF /* CKLBLuaLibKEY.cpp */,
@@ -1981,13 +2061,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB75E4619F2074C00B4D8DB /* Button.texb in Resources */,
+				EBB75E5219F2074C00B4D8DB /* walk_frame_0004.png.imag in Resources */,
 				8E0A29EE14D12A6E007E98B3 /* InfoPlist.strings in Resources */,
 				8E0A29FA14D12A6E007E98B3 /* ViewController_iPhone.xib in Resources */,
+				EBB75E5919F2074C00B4D8DB /* walk_frame_0011.png.imag in Resources */,
+				EBB75E5819F2074C00B4D8DB /* walk_frame_0010.png.imag in Resources */,
 				8E0A29FD14D12A6E007E98B3 /* ViewController_iPad.xib in Resources */,
+				EBB75E4419F2074C00B4D8DB /* AlexBrush-Regular-OTF.otf in Resources */,
+				EBB75E5119F2074C00B4D8DB /* walk_frame_0003.png.imag in Resources */,
+				EBB75E5619F2074C00B4D8DB /* walk_frame_0008.png.imag in Resources */,
+				EBB75E4A19F2074C00B4D8DB /* Listen.png.imag in Resources */,
 				B0A50A80153425AE008CCF28 /* Default@2x.png in Resources */,
+				EBB75E4C19F2074C00B4D8DB /* start.lua in Resources */,
+				EBB75E4D19F2074C00B4D8DB /* texture.texb in Resources */,
+				EBB75E4B19F2074C00B4D8DB /* MultiImgItem.lua in Resources */,
+				EBB75E4F19F2074C00B4D8DB /* walk_frame_0001.png.imag in Resources */,
+				EBB75E5719F2074C00B4D8DB /* walk_frame_0009.png.imag in Resources */,
+				EBB75E5419F2074C00B4D8DB /* walk_frame_0006.png.imag in Resources */,
+				EBB75E4819F2074C00B4D8DB /* first.json in Resources */,
+				EBB75E4519F2074C00B4D8DB /* arrow.png.imag in Resources */,
+				EBB75E5C19F2074C00B4D8DB /* walk_frame_0014.png.imag in Resources */,
+				EBB75E5A19F2074C00B4D8DB /* walk_frame_0012.png.imag in Resources */,
+				EBB75E5319F2074C00B4D8DB /* walk_frame_0005.png.imag in Resources */,
+				EBB75E5019F2074C00B4D8DB /* walk_frame_0002.png.imag in Resources */,
+				EBB75E4719F2074C00B4D8DB /* Connect.png.imag in Resources */,
+				EBB75E4E19F2074C00B4D8DB /* Texture2.texb in Resources */,
+				EBB75E5519F2074C00B4D8DB /* walk_frame_0007.png.imag in Resources */,
+				EBB75E4919F2074C00B4D8DB /* first.lua in Resources */,
+				EBB75E4319F2074C00B4D8DB /* Alex Brush SIL OFL Font License 1.1.txt in Resources */,
 				35E358E716154D460092EB1E /* icon@2x.png in Resources */,
-				3287AAB1174C88B900DF0E35 /* MTLmr3m.ttf in Resources */,
 				17729FCE17C316F400D4E765 /* Default-568h@2x.png in Resources */,
+				EBB75E5B19F2074C00B4D8DB /* walk_frame_0013.png.imag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2093,6 +2198,7 @@
 				8E8761161520196200B36A2C /* yajl_parser.c in Sources */,
 				8E8761171520196200B36A2C /* yajl_tree.c in Sources */,
 				8E8761181520196200B36A2C /* yajl_version.c in Sources */,
+				EBB75E5E19F2090500B4D8DB /* CKLBLuaLibNET.cpp in Sources */,
 				8E87611A1520198700B36A2C /* CKLBUIDragIcon.cpp in Sources */,
 				8E87611B1520198700B36A2C /* CKLBUIForm.cpp in Sources */,
 				8E87611C1520198700B36A2C /* CKLBUIProgressBar.cpp in Sources */,

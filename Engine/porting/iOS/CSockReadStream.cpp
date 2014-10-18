@@ -112,13 +112,13 @@ CSockReadStream::sock_listen(unsigned port)
     }
     ::listen(s, 5);
     int t;
-    for (unsigned i = 0; hp->h_addr_list[i]; i++)
-    {
-        char* ip = inet_ntoa(*(struct in_addr*)hp->h_addr_list[i]);
-        char buf[1024];
-        sprintf(buf, "%s", ip);
-        t = t;
-    }
+//    for (unsigned i = 0; hp->h_addr_list[i]; i++)
+//    {
+//        char* ip = inet_ntoa(*(struct in_addr*)hp->h_addr_list[i]);
+//        char buf[1024];
+//        sprintf(buf, "%s", ip);
+//        t = t;
+//    }
     if ((t = accept(s, NULL, NULL)) < 0)
         return(-1);
     
@@ -317,7 +317,6 @@ CSockReadStream::openStream(const char * sockName)
 CSockReadStream *
 CSockReadStream::listen(unsigned port)
 {
-	char * strHost = NULL;
 	CSockReadStream * pStream = NULL;
 	pStream = new CSockReadStream();
 	int fd = pStream->sock_listen(port);
@@ -335,23 +334,22 @@ CSockReadStream::listen(unsigned port)
 	return pStream;
 }
 
-void
+s32
 CSockReadStream::getHostIp(char *buf)
 {
 	char   myname[129];
-	int    s;
-	struct sockaddr_in sa;
 	struct hostent *hp;
 	gethostname(myname, sizeof(myname));
 	hp = gethostbyname(myname);
 	if (hp == NULL)
 		return(-1);
-	int t;
 	for (unsigned i = 0; hp->h_addr_list[i]; i++)
 	{
 		char* ip = inet_ntoa(*(struct in_addr*)hp->h_addr_list[i]);
 		sprintf(buf, "%s", ip);
+        return 0;
 	}
+    return 0;
 }
 
 s32

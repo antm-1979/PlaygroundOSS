@@ -84,7 +84,7 @@ With the Engine is also provided a Game Project Sample and some Script Samples (
 #### Opening the engine solution, you will find 2 projects 
 
 - GameLibraryWin32 which is the Game ENGINE project.
-- SampleProject which is the GAME poject.
+j- SampleProject which is the GAME poject.
 
 You may want to modify the Game Engine to add Tasks Classes or to modify some Tasks behavior (see Doc/Documentation_Tasks.md
 for more details about Tasks).
