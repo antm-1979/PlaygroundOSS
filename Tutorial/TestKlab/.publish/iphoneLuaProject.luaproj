@@ -19,7 +19,7 @@
     <CmdLineArgs>-i iphone/ -e iphone_external/</CmdLineArgs>
     <RemotePort>22001</RemotePort>
     <StartupFileName />
-    <WorkingDir>F:\projects\PlaygroundOSS\Tutorial\TestKlab\.publish</WorkingDir>
+    <WorkingDir>C:\Projects\PlaygroundOSS\Tutorial\TestKlab\.publish</WorkingDir>
     <UseRemoteMachine>true</UseRemoteMachine>
     <RemoteMachineName>localhost</RemoteMachineName>
     <BuildOutputDir />
