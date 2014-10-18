@@ -9,8 +9,8 @@ static ILuaFuncLib::DEFCONST luaConst[] = {
 	{ 0, 0 }
 };
 
-CSockReadStream *CKLBLuaLibNET::m_preadStream = nullptr;
-static char *m_callback = nullptr;
+CSockReadStream *CKLBLuaLibNET::m_preadStream = NULL;
+static char *m_callback = NULL;
 
 
 static CKLBLuaLibNET libdef(luaConst);
@@ -70,7 +70,7 @@ s32 CKLBLuaLibNET::luaListen(lua_State * L)
 
 	//fail operation
 	delete m_preadStream;
-	m_preadStream = nullptr;
+	m_preadStream = NULL;
 	lua.retBoolean(false);
 	return 1;
 }
@@ -111,7 +111,7 @@ s32 CKLBLuaLibNET::luaConnect(lua_State * L)
 	
 	//fail operation
 	delete m_preadStream;
-	m_preadStream = nullptr;
+	m_preadStream = NULL;
 
 	//lua.retFloat(CKLBNode::s_fBottomBorder);
 	//lua.retBoolean(true);

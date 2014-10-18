@@ -296,7 +296,7 @@
 		EBB75E5A19F2074C00B4D8DB /* walk_frame_0012.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E4019F2074B00B4D8DB /* walk_frame_0012.png.imag */; };
 		EBB75E5B19F2074C00B4D8DB /* walk_frame_0013.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E4119F2074B00B4D8DB /* walk_frame_0013.png.imag */; };
 		EBB75E5C19F2074C00B4D8DB /* walk_frame_0014.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EBB75E4219F2074C00B4D8DB /* walk_frame_0014.png.imag */; };
-		EBB75E5E19F2090500B4D8DB /* CKLBLuaLibNET.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB75E5D19F2090400B4D8DB /* CKLBLuaLibNET.cpp */; };
+		EBBEAEBF19F2537100C0E70D /* CKLBLuaLibNET.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBBEAEBD19F2537100C0E70D /* CKLBLuaLibNET.cpp */; };
 		FC6CF6F116DEF37B0098802F /* encryptFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC6CF6F016DEF37B0098802F /* encryptFile.cpp */; };
 		FCCFA67816A933F1001FAE7B /* glWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCFA67616A933F1001FAE7B /* glWrapper.cpp */; };
 		FCD31D7516AFC6CA00BBDC8F /* CiOSWidget.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCD31D7416AFC6CA00BBDC8F /* CiOSWidget.mm */; };
@@ -898,8 +898,8 @@
 		EBB75E4019F2074B00B4D8DB /* walk_frame_0012.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0012.png.imag; sourceTree = "<group>"; };
 		EBB75E4119F2074B00B4D8DB /* walk_frame_0013.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0013.png.imag; sourceTree = "<group>"; };
 		EBB75E4219F2074C00B4D8DB /* walk_frame_0014.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_frame_0014.png.imag; sourceTree = "<group>"; };
-		EBB75E5D19F2090400B4D8DB /* CKLBLuaLibNET.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CKLBLuaLibNET.cpp; sourceTree = "<group>"; };
-		EBB75E5F19F2091100B4D8DB /* CKLBLuaLibNET.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKLBLuaLibNET.h; sourceTree = "<group>"; };
+		EBBEAEBD19F2537100C0E70D /* CKLBLuaLibNET.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CKLBLuaLibNET.cpp; path = ../../../../source/LuaLib/CKLBLuaLibNET.cpp; sourceTree = "<group>"; };
+		EBBEAEBE19F2537100C0E70D /* CKLBLuaLibNET.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKLBLuaLibNET.h; path = ../../../../source/LuaLib/CKLBLuaLibNET.h; sourceTree = "<group>"; };
 		FC6CF6F016DEF37B0098802F /* encryptFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = encryptFile.cpp; sourceTree = "<group>"; };
 		FC6CF6F416DEF3890098802F /* encryptFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = encryptFile.h; path = ../source/include/encryptFile.h; sourceTree = "<group>"; };
 		FCCFA67616A933F1001FAE7B /* glWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glWrapper.cpp; sourceTree = "<group>"; };
@@ -1946,8 +1946,8 @@
 		8EA65E14155D0FF00066E306 /* LuaLib */ = {
 			isa = PBXGroup;
 			children = (
-				EBB75E5F19F2091100B4D8DB /* CKLBLuaLibNET.h */,
-				EBB75E5D19F2090400B4D8DB /* CKLBLuaLibNET.cpp */,
+				EBBEAEBD19F2537100C0E70D /* CKLBLuaLibNET.cpp */,
+				EBBEAEBE19F2537100C0E70D /* CKLBLuaLibNET.h */,
 				6FFE230C176B0639003B3F9F /* CKLBLuaLibHASH.cpp */,
 				6FFE230D176B0639003B3F9F /* CKLBLuaLibHASH.h */,
 				8EC9671415AD6899008FCDEF /* CKLBLuaLibKEY.cpp */,
@@ -2198,7 +2198,7 @@
 				8E8761161520196200B36A2C /* yajl_parser.c in Sources */,
 				8E8761171520196200B36A2C /* yajl_tree.c in Sources */,
 				8E8761181520196200B36A2C /* yajl_version.c in Sources */,
-				EBB75E5E19F2090500B4D8DB /* CKLBLuaLibNET.cpp in Sources */,
+				EBBEAEBF19F2537100C0E70D /* CKLBLuaLibNET.cpp in Sources */,
 				8E87611A1520198700B36A2C /* CKLBUIDragIcon.cpp in Sources */,
 				8E87611B1520198700B36A2C /* CKLBUIForm.cpp in Sources */,
 				8E87611C1520198700B36A2C /* CKLBUIProgressBar.cpp in Sources */,
