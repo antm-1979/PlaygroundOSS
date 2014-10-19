@@ -121,8 +121,11 @@ CSockReadStream::sock_listen(unsigned port)
 //    }
     if ((t = accept(s, NULL, NULL)) < 0)
         return(-1);
-    
-    return(s);
+
+    int flags = fcntl(t, F_GETFL, 0);
+    fcntl(t, F_SETFL, flags | O_NONBLOCK);
+
+    return(t);
 
 
 }
