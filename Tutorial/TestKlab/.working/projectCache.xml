@@ -145,13 +145,6 @@
       <extraXmlFileSize>2036</extraXmlFileSize>
     </Entry>
     <Entry>
-      <resourcePath>MultiImgItem.lua</resourcePath>
-      <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
-      <resourceFileSize>0</resourceFileSize>
-      <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
-      <extraXmlFileSize>0</extraXmlFileSize>
-    </Entry>
-    <Entry>
       <id>06c38822-4672-4e0a-a181-9bfb12f01044</id>
       <resourcePath>first.xml</resourcePath>
       <resourceLastModified>2014-10-19T16:23:08.175979+08:00</resourceLastModified>
@@ -199,6 +192,13 @@
     </Entry>
     <Entry>
       <resourcePath>first.lua</resourcePath>
+      <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
+      <resourceFileSize>0</resourceFileSize>
+      <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
+      <extraXmlFileSize>0</extraXmlFileSize>
+    </Entry>
+    <Entry>
+      <resourcePath>MultiImgItem.lua</resourcePath>
       <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
       <resourceFileSize>0</resourceFileSize>
       <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
