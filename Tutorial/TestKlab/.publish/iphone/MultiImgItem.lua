@@ -1,5 +1,6 @@
 function setup()
 	count = 0
+	remoteEvt = 6
 
 	pAssetList = {
       "asset://walk_frame_0001.png.imag",
@@ -53,15 +54,63 @@ function setup()
 
 	screen2 = sysInfo()
 
+
+	localQueue = {}
+	for i=0,11 do
+      localQueue[i] =0
+    end
+	remoteQueue = {}
+	for i=0,13 do
+      remoteQueue[i] = 0
+    end
+
 end
 
 
 function execute(deltaT)
+	--read net event
+	local nremote
+	repeat
+		bhasEvent,event,evtData = NET_readEvent()
+		if(bhasEvent ~= true) then break end
+		if (event == 1) then			--change orientation
+			nremote = remoteEvt % 12
+			remoteQueue[nremote] = evtData
+			remoteEvt = remoteEvt + 1
+
+			--syslog('NET_readEvent\t')
+			--syslog(tostring(event))
+			--syslog(tostring(evtData))
+		elseif(event == 2 ) then		--get peer screen width and height
+			screen2.width = math.floor(evtData / 65536)
+			screen2.height = evtData % 65536
+			syslog(tostring(screen2.width))
+			syslog(tostring(screen2.height))
+		end
+	until count % 12 == nremote
+
+	if (count + 1) % 12 == remoteEvt % 12 then return end
 	count = count + 1
+
+	--send local event to peer
+	local nwriteevent = (count + 5) % 12
+	NET_writeEvent(1,localQueue[nwriteevent])
+
+
 	local idx
 	local prop
 	--local item
 	--animation
+	local nexec = count % 12
+	if (localQueue[nexec] ~= 0) then
+		orientation = localQueue[nexec]
+		if (orientation == 1) then
+			bnorit = true
+		elseif (orientation == 3) then
+			bnorit = false
+		end
+		localQueue[nexec] = 0
+	end
 	if count % 3 == 0 then
 		prop = TASK_getProperty(pMIT)
 		idx = prop.index
@@ -89,7 +138,7 @@ function execute(deltaT)
 		prop.y = prop.y - 1
 	end
 	screen = sysInfo()
-	if( prop.x>=0 and prop.x < screen.width - picwidth and prop.y >= 0 and prop.y < screen.height - picheight ) then
+	if ( prop.x>=0 and prop.x < screen.width - picwidth and prop.y >= 0 and prop.y < screen.height - picheight ) then
 		TASK_setProperty(pMIT, prop)	
 	else
 		--syslog("Out of screen")
@@ -102,26 +151,6 @@ function execute(deltaT)
 
 	--peer item controlled from net
 	--animation
-	bhasEvent,event,evtData = NET_readEvent()
-	if(bhasEvent) then
-		if (event == 1) then			--change orientation
-			if (evtData >4 ) then
-				orientation2 = evtData - 4
-				bnorit2 = true
-			else
-				orientation2 = evtData
-				bnorit2 = false
-			end
-			--syslog('NET_readEvent\t')
-			--syslog(tostring(event))
-			--syslog(tostring(evtData))
-		elseif(event == 2 ) then		--get peer screen width and height
-			screen2.width = math.floor(evtData / 65536)
-			screen2.height = evtData % 65536
-			syslog(tostring(screen2.width))
-			syslog(tostring(screen2.height))
-		end
-	end
 	if count % 3 == 0 then
 		prop = TASK_getProperty(pMITother)
 		idx = prop.index
@@ -148,9 +177,10 @@ function execute(deltaT)
 	elseif orientation2 == 4 then
 		prop.y = prop.y - 1
 	end
-	if(prop.x>=0 and prop.x < screen2.width - picwidth and prop.y >= 0 and prop.y < screen2.height - picheight ) then
+	if (prop.x>=0 and prop.x < screen2.width - picwidth and prop.y >= 0 and prop.y < screen2.height - picheight ) then
 		TASK_setProperty(pMITother, prop)	
 	end
+
 
 end
 
@@ -173,24 +203,16 @@ function callback_TP(tbl)
 			local fabcenty = centy
 			if fabcentx < 0 then fabcentx = -fabcentx end
 			if fabcenty < 0 then fabcenty = -fabcenty end
+			local nQueue = (count + 6) % 12
 			if centx >= 0 and fabcenty < centx then
-				orientation = 1
-				bnorit = true
+				localQueue[nQueue] = 1
 			elseif centy >= 0 and centy > fabcentx then
-				orientation = 2
+				localQueue[nQueue] = 2
 			elseif centx < 0 and fabcenty < -centx then
-				orientation = 3
-				bnorit = false
+				localQueue[nQueue] = 3
 			elseif centy<0 and -centy > fabcentx then
-				orientation = 4
+				localQueue[nQueue] = 4
 			end
-
-			--send event to target
-			local evtData = orientation
-			if(bnorit) then
-				evtData = evtData + 4
-			end
-			NET_writeEvent(1,evtData)
 		end
 	end
 end

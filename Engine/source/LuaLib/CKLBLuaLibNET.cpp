@@ -142,14 +142,11 @@ s32 CKLBLuaLibNET::luaRead(lua_State * L)
 		lua.retNil();
 		return 3;
 	}
-	if (len > 4096)
-		len = 4096;
 	if (len > 0)
 	{
+		if (len > 4096)
+			len = 4096;
 		m_preadStream->readBlock(data, len);
-	}
-	if (len)
-	{
 		lua.retBoolean(true);
 		lua.retInt(*(int *)data);
 		lua.retInt(*(int *)(data + 4));
@@ -167,12 +164,13 @@ s32 CKLBLuaLibNET::luaWrite(lua_State * L)
 {
 	CLuaState lua(L);
 	int argc = lua.numArgs();
-	if (argc != 2) {
+	if (argc != 3) {
 		lua.retBoolean(false);
 		return 1;
 	}
 	int evt = lua.getInt(1);
-	int evtdata = lua.getInt(2);
+	int timerstamp = lua.getInt(2);
+	int evtdata = lua.getInt(3);
 
 	IWriteStream * ws = m_preadStream->getWriteStream();
 	if (!ws)

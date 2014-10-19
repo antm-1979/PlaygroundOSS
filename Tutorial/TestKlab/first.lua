@@ -28,7 +28,7 @@ function OnListen()
 	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Listen",FORM_NODE_VISIBLE,false)
 	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Connect",FORM_NODE_VISIBLE,false)
 	syslog('----- OnListen() -----')
-	if(NET_listen(9581) ~= true) then
+	if (NET_listen(9581) ~= true) then
 		sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"listen error,port occypied?Restart system.")
 	else
 		screen = sysInfo() --send screen size
@@ -44,7 +44,7 @@ function OnConnect()
 	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Connect",FORM_NODE_VISIBLE,false)
 	syslog('----- OnConnect() -----')
 	str = sysCommand(pForm, UI_FORM_UPDATE_NODE,"textbox_target",FORM_TEXT_GET)
-	if(NET_connect(str,9581) ~= true) then
+	if (NET_connect(str,9581) ~= true) then
 		sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"connect error,ip correct?")
 	else
 		screen = sysInfo()	--send screen size
