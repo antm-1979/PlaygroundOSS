@@ -24,16 +24,31 @@ end
 
 
 function OnListen()
-	NET_listen(9581)
+	sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"listen...")
+	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Listen",FORM_NODE_VISIBLE,false)
+	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Connect",FORM_NODE_VISIBLE,false)
 	syslog('----- OnListen() -----')
-
-	sysLoad("asset://MultiImgItem.lua")
+	if(NET_listen(9581) ~= true) then
+		sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"listen error,port occypied?Restart system.")
+	else
+		screen = sysInfo() --send screen size
+		NET_writeEvent(2,screen.width*65536+screen.height)
+		sysLoad("asset://MultiImgItem.lua")
+	end
 end
 
-function OnConnect()
-	str = sysCommand(pForm, UI_FORM_UPDATE_NODE,"textbox_target",FORM_TEXT_GET)
-	NET_connect(str,9581)
-	syslog('----- OnConnect() -----')
 
-	sysLoad("asset://MultiImgItem.lua")
+function OnConnect()
+	sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"connecting...")
+	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Listen",FORM_NODE_VISIBLE,false)
+	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Connect",FORM_NODE_VISIBLE,false)
+	syslog('----- OnConnect() -----')
+	str = sysCommand(pForm, UI_FORM_UPDATE_NODE,"textbox_target",FORM_TEXT_GET)
+	if(NET_connect(str,9581) ~= true) then
+		sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"connect error,ip correct?")
+	else
+		screen = sysInfo()	--send screen size
+		NET_writeEvent(2,screen.width*65536+screen.height)
+		sysLoad("asset://MultiImgItem.lua")
+	end
 end
