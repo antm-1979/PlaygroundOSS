@@ -79,7 +79,8 @@ CSockReadStream::sock_connect(const char *hostname, int port)
     return dstSocket;
 }
 
-int	CSockReadStream::sock_listen(unsigned port)
+int
+CSockReadStream::sock_listen(unsigned port)
 {
 	SOCKET        sListen,sClient;
 	int           iAddrSize;
