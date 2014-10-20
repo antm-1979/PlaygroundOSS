@@ -66,36 +66,53 @@ function setup()
 
 end
 
+-[[
+CheckPointInRect(rect1,x,y)
+	if (x < rect1.x or x > rect1.x + rect1.width) then return false
+	if (y < rect1.y or y > rect1.y + rect1.height) then return false
+ return true
+end
+
+fuction CheckRectCollide(rect1, rect2)
+if (CheckPointInRect(rect1, rect2.x, rect2.y)) then return true end
+if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y)) then return true end
+if (CheckPointInRect(rect1, rect2.x, rect2.y + rect2.height)) then return true end
+if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y + rect2.height)) then return true end
+return false
+end
+]]
 
 function execute(deltaT)
+	syslog(string.Format("count = %d,remoteEvt = %d",count,remoteEvt))
+
 	--read net event
 	local nremote
-	repeat
+	while remoteEvt < count + 13 do
 		bhasEvent,event,evtData = NET_readEvent()
 		if(bhasEvent ~= true) then break end
 		if (event == 1) then			--change orientation
 			nremote = remoteEvt % 12
 			remoteQueue[nremote] = evtData
 			remoteEvt = remoteEvt + 1
-
-			--syslog('NET_readEvent\t')
-			--syslog(tostring(event))
-			--syslog(tostring(evtData))
 		elseif(event == 2 ) then		--get peer screen width and height
 			screen2.width = math.floor(evtData / 65536)
 			screen2.height = evtData % 65536
 			syslog(tostring(screen2.width))
 			syslog(tostring(screen2.height))
 		end
-	until count % 12 == nremote
+	end
 
-	if (count + 1) % 12 == remoteEvt % 12 then return end
+	syslog(string.Format("after net count = %d,remoteEvt = %d nremote=%d",count,remoteEvt,nremote))
+
+	if count + 1 == remoteEvt then return end
 	count = count + 1
-	syslog(string.Format("count = %d,remoteEvt = %d",count,rremoteEvt))
+
+
 	--send local event to peer
 	local nwriteevent = (count + 5) % 12
 	NET_writeEvent(1,localQueue[nwriteevent])
 
+	syslog(string.Format("write event to net nwriteevent=%d",count,nwriteevent))
 
 	local idx
 	local prop
@@ -148,8 +165,16 @@ function execute(deltaT)
 		--syslog(tostring(prop.y))
 	end
 
-
 	--peer item controlled from net
+	if (remoteQueue[nexec] ~= 0) then
+		orientation2 = remoteQueue[nexec]
+		if (orientation2 == 1) then
+			bnorit2 = true
+		elseif (orientation2 == 3) then
+			bnorit2 = false
+		end
+		remoteQueue[nexec] = 0
+	end
 	--animation
 	if count % 3 == 0 then
 		prop = TASK_getProperty(pMITother)
@@ -167,6 +192,7 @@ function execute(deltaT)
 		end
 	end
 	--move
+
 	prop = TASK_getProperty(pMITother)
 	if orientation2 == 1 then
 		prop.x = prop.x + 1
@@ -180,7 +206,6 @@ function execute(deltaT)
 	if (prop.x>=0 and prop.x < screen2.width - picwidth and prop.y >= 0 and prop.y < screen2.height - picheight ) then
 		TASK_setProperty(pMITother, prop)	
 	end
-
 
 end
 

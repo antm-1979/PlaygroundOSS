@@ -197,12 +197,5 @@
       <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
       <extraXmlFileSize>0</extraXmlFileSize>
     </Entry>
-    <Entry>
-      <resourcePath>MultiImgItem.lua</resourcePath>
-      <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
-      <resourceFileSize>0</resourceFileSize>
-      <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
-      <extraXmlFileSize>0</extraXmlFileSize>
-    </Entry>
   </entries>
 </ResourceWrapperCache>
