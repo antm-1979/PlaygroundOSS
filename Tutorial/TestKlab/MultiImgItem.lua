@@ -66,21 +66,19 @@ function setup()
 
 end
 
--[[
-CheckPointInRect(rect1,x,y)
-	if (x < rect1.x or x > rect1.x + rect1.width) then return false
-	if (y < rect1.y or y > rect1.y + rect1.height) then return false
- return true
+function CheckPointInRect(rect1,x,y)
+	if (x < rect1.x or x > rect1.x + rect1.width) then return false end
+	if (y < rect1.y or y > rect1.y + rect1.height) then return false end
+	return true
 end
 
-fuction CheckRectCollide(rect1, rect2)
+function CheckRectCollide(rect1, rect2)
 if (CheckPointInRect(rect1, rect2.x, rect2.y)) then return true end
 if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y)) then return true end
 if (CheckPointInRect(rect1, rect2.x, rect2.y + rect2.height)) then return true end
 if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y + rect2.height)) then return true end
 return false
 end
-]]
 
 function execute(deltaT)
 	syslog(string.Format("count = %d,remoteEvt = %d",count,remoteEvt))
