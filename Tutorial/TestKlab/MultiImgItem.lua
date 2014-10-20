@@ -81,7 +81,7 @@ return false
 end
 
 function execute(deltaT)
-	syslog(string.Format("count = %d,remoteEvt = %d",count,remoteEvt))
+	syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
 
 	--read net event
 	local nremote
