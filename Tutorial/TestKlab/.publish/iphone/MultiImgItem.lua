@@ -1,7 +1,6 @@
 function setup()
 	count = 0
 	remoteEvt = 6
-	syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
 
 	pAssetList = {
       "asset://walk_frame_0001.png.imag",
@@ -31,7 +30,6 @@ function setup()
 	end
 	pMIT = UI_MultiImgItem( nil, 7000, 500, y1, pAssetList, 0)
 	local prop = TASK_getProperty(pMIT)
-	--prop.color=4278255615
 	prop.color=255
 	TASK_setProperty(pMIT, prop)		
 
@@ -58,7 +56,7 @@ function setup()
 
 	localQueue = {}
 	for i=0,11 do
-      localQueue[i] =0
+      localQueue[i] = 0
     end
 	remoteQueue = {}
 	for i=0,13 do
@@ -85,7 +83,7 @@ end
 
 function execute(deltaT)
 	--syslog(string.format("deltaT =%d",deltaT))
-	syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
+	--syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
 
 	--read net event
 	local nremote
@@ -102,9 +100,9 @@ function execute(deltaT)
 		end
 	end
 
-	if (nremote ~= nil) then
-		syslog(string.format("after net remoteEvt = %d nremote=%d",remoteEvt,nremote))
-	end
+	--if (nremote ~= nil) then
+		--syslog(string.format("after net remoteEvt = %d nremote=%d",remoteEvt,nremote))
+	--end
 
 	if count + 1 == remoteEvt then return end
 	count = count + 1
@@ -114,7 +112,7 @@ function execute(deltaT)
 	local nwriteevent = (count + 5) % 12
 	NET_writeEvent(1,localQueue[nwriteevent])
 
-	syslog(string.format("write event to net nwriteevent=%d",nwriteevent))
+	--syslog(string.format("write event to net nwriteevent=%d",nwriteevent))
 
 	local idx
 	local prop
@@ -159,12 +157,6 @@ function execute(deltaT)
 	screen = sysInfo()
 	if ( prop.x>=0 and prop.x < screen.width - picwidth and prop.y >= 0 and prop.y < screen.height - picheight ) then
 		TASK_setProperty(pMIT, prop)	
-	else
-		--syslog("Out of screen")
-		--syslog(tostring(screen.width))
-		--syslog(tostring(screen.height))
-		--syslog(tostring(prop.x))
-		--syslog(tostring(prop.y))
 	end
 
 	--peer item controlled from net
@@ -178,9 +170,10 @@ function execute(deltaT)
 		remoteQueue[nexec] = 0
 	end
 	--animation
+	local prop2
 	if count % 3 == 0 then
-		prop = TASK_getProperty(pMITother)
-		idx = prop.index
+		prop2 = TASK_getProperty(pMITother)
+		idx = prop2.index
 		idx = idx + 1
 		idx = idx % 7
 		if orientation2 == 1 then
@@ -195,18 +188,26 @@ function execute(deltaT)
 	end
 	--move
 
-	prop = TASK_getProperty(pMITother)
+	prop2 = TASK_getProperty(pMITother)
 	if orientation2 == 1 then
-		prop.x = prop.x + 1
+		prop2.x = prop2.x + 1
 	elseif orientation2 == 2 then
-		prop.y = prop.y + 1
+		prop2.y = prop2.y + 1
 	elseif orientation2 == 3 then
-		prop.x = prop.x - 1
+		prop2.x = prop2.x - 1
 	elseif orientation2 == 4 then
-		prop.y = prop.y - 1
+		prop2.y = prop2.y - 1
 	end
-	if (prop.x>=0 and prop.x < screen2.width - picwidth and prop.y >= 0 and prop.y < screen2.height - picheight ) then
-		TASK_setProperty(pMITother, prop)	
+	if (prop2.x>=0 and prop2.x < screen2.width - picwidth and prop2.y >= 0 and prop2.y < screen2.height - picheight ) then
+		TASK_setProperty(pMITother, prop2)	
+	end
+	if count % 10 == 0 then
+		if NET_isListen() then
+			--dd=count+prop.x+prop.y+prop2.x+prop2.y
+			syslog(string.format("frame=%d  (%d,%d) (%d,%d)",count,prop.x,prop.y,prop2.x,prop2.y))
+		else
+			syslog(string.format("frame=%d (%d,%d) (%d,%d)",count,prop2.x,prop2.y,prop.x,prop.y))
+		end
 	end
 
 end

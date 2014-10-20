@@ -7,7 +7,7 @@
   <DrawingNodeName>true</DrawingNodeName>
   <FormBounds xmlns:d1p1="http://schemas.datacontract.org/2004/07/System.Drawing">
     <d1p1:height>693</d1p1:height>
-    <d1p1:width>1004</d1p1:width>
+    <d1p1:width>1025</d1p1:width>
     <d1p1:x>93</d1p1:x>
     <d1p1:y>-33</d1p1:y>
   </FormBounds>
@@ -108,7 +108,7 @@
             <class>label</class>
             <text>Enter target ip</text>
             <fontname></fontname>
-            <fontsize>25</fontsize>
+            <fontsize>30</fontsize>
             <_x0023_color xmlns:d6p1="http://www.w3.org/2001/XMLSchema" i:type="d6p1:int">-16776961</_x0023_color>
             <width>187</width>
             <height>30</height>
@@ -125,7 +125,7 @@
             <class>label</class>
             <text>192.168.1.7</text>
             <fontname></fontname>
-            <fontsize>20</fontsize>
+            <fontsize>30</fontsize>
             <_x0023_color xmlns:d6p1="http://www.w3.org/2001/XMLSchema" i:type="d6p1:int">-16777216</_x0023_color>
             <width>245</width>
             <height>38</height>
@@ -136,13 +136,13 @@
           </UINode>
           <UINode>
             <name>label_ip</name>
-            <x>2</x>
+            <x>0</x>
             <y>40</y>
             <priority>6</priority>
             <class>label</class>
             <text>Ip Address</text>
             <fontname></fontname>
-            <fontsize>25</fontsize>
+            <fontsize>30</fontsize>
             <_x0023_color xmlns:d6p1="http://www.w3.org/2001/XMLSchema" i:type="d6p1:int">-13421773</_x0023_color>
             <width>137</width>
             <height>30</height>
@@ -192,23 +192,6 @@
         <visible>0</visible>
       </UINode>
       <UINode>
-        <name>label</name>
-        <x>0</x>
-        <y>0</y>
-        <priority>8</priority>
-        <class>label</class>
-        <text>label</text>
-        <fontname></fontname>
-        <fontsize>20</fontsize>
-        <_x0023_color xmlns:d4p1="http://www.w3.org/2001/XMLSchema" i:type="d4p1:int">-13421773</_x0023_color>
-        <width>100</width>
-        <height>30</height>
-        <_x0040_Publishable>true</_x0040_Publishable>
-        <xscale>1</xscale>
-        <yscale>1</yscale>
-        <rotation>0</rotation>
-      </UINode>
-      <UINode>
         <name>label_notify</name>
         <x>0</x>
         <y>420</y>
@@ -216,7 +199,7 @@
         <class>label</class>
         <text>Listen or Connect</text>
         <fontname></fontname>
-        <fontsize>25</fontsize>
+        <fontsize>30</fontsize>
         <_x0023_color xmlns:d4p1="http://www.w3.org/2001/XMLSchema" i:type="d4p1:int">-65536</_x0023_color>
         <width>675</width>
         <height>43</height>
@@ -233,9 +216,9 @@
         <class>label</class>
         <text>control blue person</text>
         <fontname></fontname>
-        <fontsize>25</fontsize>
+        <fontsize>30</fontsize>
         <_x0023_color xmlns:d4p1="http://www.w3.org/2001/XMLSchema" i:type="d4p1:int">-16776961</_x0023_color>
-        <width>261</width>
+        <width>294</width>
         <height>48</height>
         <_x0040_Publishable>true</_x0040_Publishable>
         <xscale>1</xscale>

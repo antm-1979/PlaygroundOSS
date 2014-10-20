@@ -6,8 +6,8 @@
     <XmlDocumentFolder>
       <Documents>
         <DocumentRef FileName=".\start.lua" />
-        <DocumentRef FileName=".\MultiImgItem.lua" />
         <DocumentRef FileName=".\first.lua" />
+        <DocumentRef FileName=".\MultiImgItem.lua" />
       </Documents>
       <DocumentGroups />
       <DocumentFolders />
