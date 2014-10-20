@@ -1,6 +1,7 @@
 function setup()
 	count = 0
 	remoteEvt = 6
+	syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
 
 	pAssetList = {
       "asset://walk_frame_0001.png.imag",
@@ -66,6 +67,7 @@ function setup()
 
 end
 
+--[[
 function CheckPointInRect(rect1,x,y)
 	if (x < rect1.x or x > rect1.x + rect1.width) then return false end
 	if (y < rect1.y or y > rect1.y + rect1.height) then return false end
@@ -79,8 +81,10 @@ if (CheckPointInRect(rect1, rect2.x, rect2.y + rect2.height)) then return true e
 if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y + rect2.height)) then return true end
 return false
 end
+]]
 
 function execute(deltaT)
+	--syslog(string.format("deltaT =%d",deltaT))
 	syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
 
 	--read net event
@@ -95,12 +99,12 @@ function execute(deltaT)
 		elseif(event == 2 ) then		--get peer screen width and height
 			screen2.width = math.floor(evtData / 65536)
 			screen2.height = evtData % 65536
-			syslog(tostring(screen2.width))
-			syslog(tostring(screen2.height))
 		end
 	end
 
-	syslog(string.format("after net count = %d,remoteEvt = %d nremote=%d",count,remoteEvt,nremote))
+	if (nremote ~= nil) then
+		syslog(string.format("after net remoteEvt = %d nremote=%d",remoteEvt,nremote))
+	end
 
 	if count + 1 == remoteEvt then return end
 	count = count + 1
@@ -110,7 +114,7 @@ function execute(deltaT)
 	local nwriteevent = (count + 5) % 12
 	NET_writeEvent(1,localQueue[nwriteevent])
 
-	syslog(string.format("write event to net nwriteevent=%d",count,nwriteevent))
+	syslog(string.format("write event to net nwriteevent=%d",nwriteevent))
 
 	local idx
 	local prop

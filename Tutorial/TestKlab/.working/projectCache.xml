@@ -191,13 +191,6 @@
       <extraXmlFileSize>0</extraXmlFileSize>
     </Entry>
     <Entry>
-      <resourcePath>first.lua</resourcePath>
-      <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
-      <resourceFileSize>0</resourceFileSize>
-      <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
-      <extraXmlFileSize>0</extraXmlFileSize>
-    </Entry>
-    <Entry>
       <id>d4ef1ba2-bf3e-4315-9b4f-3367e08dd8f3</id>
       <resourcePath>exploded/50612a957a97b_frame_0002.png</resourcePath>
       <resourceLastModified>2014-10-20T20:10:30.4528616+08:00</resourceLastModified>
@@ -252,6 +245,13 @@
       <resourceFileSize>16418</resourceFileSize>
       <extraXmlLastModified>2014-10-20T20:16:41.120328+08:00</extraXmlLastModified>
       <extraXmlFileSize>2109</extraXmlFileSize>
+    </Entry>
+    <Entry>
+      <resourcePath>first.lua</resourcePath>
+      <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
+      <resourceFileSize>0</resourceFileSize>
+      <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
+      <extraXmlFileSize>0</extraXmlFileSize>
     </Entry>
   </entries>
 </ResourceWrapperCache>
