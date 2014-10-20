@@ -91,7 +91,7 @@ function execute(deltaT)
 
 	if (count + 1) % 12 == remoteEvt % 12 then return end
 	count = count + 1
-
+	syslog(string.Format("count = %d,remoteEvt = %d",count,rremoteEvt))
 	--send local event to peer
 	local nwriteevent = (count + 5) % 12
 	NET_writeEvent(1,localQueue[nwriteevent])
