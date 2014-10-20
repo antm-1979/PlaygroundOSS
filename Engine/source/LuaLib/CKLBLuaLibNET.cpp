@@ -164,13 +164,12 @@ s32 CKLBLuaLibNET::luaWrite(lua_State * L)
 {
 	CLuaState lua(L);
 	int argc = lua.numArgs();
-	if (argc != 3) {
+	if (argc != 2) {
 		lua.retBoolean(false);
 		return 1;
 	}
 	int evt = lua.getInt(1);
-	int timerstamp = lua.getInt(2);
-	int evtdata = lua.getInt(3);
+	int evtdata = lua.getInt(2);
 
 	IWriteStream * ws = m_preadStream->getWriteStream();
 	if (!ws)

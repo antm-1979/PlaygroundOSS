@@ -58,7 +58,7 @@ function setup()
 
 	localQueue = {}
 	for i=0,11 do
-      localQueue[i] =0
+      localQueue[i] = 0
     end
 	remoteQueue = {}
 	for i=0,13 do
