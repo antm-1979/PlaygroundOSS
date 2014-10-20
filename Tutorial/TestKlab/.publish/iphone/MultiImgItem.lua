@@ -100,7 +100,7 @@ function execute(deltaT)
 		end
 	end
 
-	syslog(string.Format("after net count = %d,remoteEvt = %d nremote=%d",count,remoteEvt,nremote))
+	syslog(string.format("after net count = %d,remoteEvt = %d nremote=%d",count,remoteEvt,nremote))
 
 	if count + 1 == remoteEvt then return end
 	count = count + 1
@@ -110,7 +110,7 @@ function execute(deltaT)
 	local nwriteevent = (count + 5) % 12
 	NET_writeEvent(1,localQueue[nwriteevent])
 
-	syslog(string.Format("write event to net nwriteevent=%d",count,nwriteevent))
+	syslog(string.format("write event to net nwriteevent=%d",count,nwriteevent))
 
 	local idx
 	local prop
