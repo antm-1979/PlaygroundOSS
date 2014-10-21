@@ -4,7 +4,7 @@
     <Version>0.1.0</Version>
     <ProjectFile>Button.xml</ProjectFile>
     <ProjectFileRelativeDir />
-    <SaveDate>2014-10-15T22:28:48</SaveDate>
+    <SaveDate>2014-10-21T13:01:12</SaveDate>
     <EditState>true</EditState>
     <ContainerScale>1</ContainerScale>
     <ContainerSnap>8</ContainerSnap>
@@ -49,6 +49,84 @@
       <IsFlipY>false</IsFlipY>
       <IsSwitchXY>false</IsSwitchXY>
       <ImgPathName>Listen.png</ImgPathName>
+      <ZOrder>0</ZOrder>
+    </TextureModel>
+    <TextureModel>
+      <Pos>
+        <X>384</X>
+        <Y>0</Y>
+      </Pos>
+      <Id>0</Id>
+      <Name>explode_frame_0002.png</Name>
+      <IsFlipX>false</IsFlipX>
+      <IsFlipY>false</IsFlipY>
+      <IsSwitchXY>false</IsSwitchXY>
+      <ImgPathName>explode/explode_frame_0002.png</ImgPathName>
+      <ZOrder>0</ZOrder>
+    </TextureModel>
+    <TextureModel>
+      <Pos>
+        <X>256</X>
+        <Y>0</Y>
+      </Pos>
+      <Id>0</Id>
+      <Name>explode_frame_0001.png</Name>
+      <IsFlipX>false</IsFlipX>
+      <IsFlipY>false</IsFlipY>
+      <IsSwitchXY>false</IsSwitchXY>
+      <ImgPathName>explode/explode_frame_0001.png</ImgPathName>
+      <ZOrder>0</ZOrder>
+    </TextureModel>
+    <TextureModel>
+      <Pos>
+        <X>256</X>
+        <Y>128</Y>
+      </Pos>
+      <Id>0</Id>
+      <Name>explode_frame_0003.png</Name>
+      <IsFlipX>false</IsFlipX>
+      <IsFlipY>false</IsFlipY>
+      <IsSwitchXY>false</IsSwitchXY>
+      <ImgPathName>explode/explode_frame_0003.png</ImgPathName>
+      <ZOrder>0</ZOrder>
+    </TextureModel>
+    <TextureModel>
+      <Pos>
+        <X>384</X>
+        <Y>128</Y>
+      </Pos>
+      <Id>0</Id>
+      <Name>explode_frame_0004.png</Name>
+      <IsFlipX>false</IsFlipX>
+      <IsFlipY>false</IsFlipY>
+      <IsSwitchXY>false</IsSwitchXY>
+      <ImgPathName>explode/explode_frame_0004.png</ImgPathName>
+      <ZOrder>0</ZOrder>
+    </TextureModel>
+    <TextureModel>
+      <Pos>
+        <X>0</X>
+        <Y>256</Y>
+      </Pos>
+      <Id>0</Id>
+      <Name>explode_frame_0005.png</Name>
+      <IsFlipX>false</IsFlipX>
+      <IsFlipY>false</IsFlipY>
+      <IsSwitchXY>false</IsSwitchXY>
+      <ImgPathName>explode/explode_frame_0005.png</ImgPathName>
+      <ZOrder>0</ZOrder>
+    </TextureModel>
+    <TextureModel>
+      <Pos>
+        <X>128</X>
+        <Y>256</Y>
+      </Pos>
+      <Id>0</Id>
+      <Name>explode_frame_0006.png</Name>
+      <IsFlipX>false</IsFlipX>
+      <IsFlipY>false</IsFlipY>
+      <IsSwitchXY>false</IsSwitchXY>
+      <ImgPathName>explode/explode_frame_0006.png</ImgPathName>
       <ZOrder>0</ZOrder>
     </TextureModel>
   </ArrayOfTextureModel>

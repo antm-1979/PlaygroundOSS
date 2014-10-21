@@ -18,7 +18,7 @@ function setup()
       "asset://walk_frame_0013.png.imag",
       "asset://walk_frame_0014.png.imag"
    }
-	
+
 	local y1
 	local y2
 	if (NET_isListen()) then
@@ -63,29 +63,54 @@ function setup()
       remoteQueue[i] = 0
     end
 
+
+	bcollide = false
+	pExplodeList = {
+      "asset://explode_frame_0001.png.imag",
+      "asset://explode_frame_0002.png.imag",
+      "asset://explode_frame_0003.png.imag",
+      "asset://explode_frame_0004.png.imag",
+      "asset://explode_frame_0005.png.imag",
+      "asset://explode_frame_0006.png.imag"
+	}
+	pExplode = UI_MultiImgItem( nil, 8000, 0, 0, pExplodeList, 0)
+	propExplode = TASK_getProperty(pExplode)
+	propExplode.visible = false
+	TASK_setProperty(pExplode, propExplode)	
 end
 
---[[
+
 function CheckPointInRect(rect1,x,y)
-	if (x < rect1.x or x > rect1.x + rect1.width) then return false end
-	if (y < rect1.y or y > rect1.y + rect1.height) then return false end
+	if (x < rect1.x or x >= rect1.x + rect1.width) then return false end
+	if (y < rect1.y or y >= rect1.y + rect1.height) then return false end
 	return true
 end
 
 function CheckRectCollide(rect1, rect2)
-if (CheckPointInRect(rect1, rect2.x, rect2.y)) then return true end
-if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y)) then return true end
-if (CheckPointInRect(rect1, rect2.x, rect2.y + rect2.height)) then return true end
-if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y + rect2.height)) then return true end
-return false
+	if (CheckPointInRect(rect1, rect2.x, rect2.y)) then return true end
+	if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y)) then return true end
+	if (CheckPointInRect(rect1, rect2.x, rect2.y + rect2.height)) then return true end
+	if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y + rect2.height)) then 
+		return true 
+	end
+	return false
 end
-]]
+
 
 function execute(deltaT)
 	--syslog(string.format("deltaT =%d",deltaT))
 	--syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
 
 	--read net event
+	local propExplode
+	if(bcollide) then
+		propExplode = TASK_getProperty(pExplode)
+		if(propExplode.index < 6) then
+			propExplode.index = (propExplode.index + 1)
+		end
+		sysCommand(pMIT, UI_MULTIIMG_SET_INDEX, idx)
+	return
+	end
 	local nremote
 	while remoteEvt < count + 13 do
 		bhasEvent,event,evtData = NET_readEvent()
@@ -198,9 +223,11 @@ function execute(deltaT)
 	elseif orientation2 == 4 then
 		prop2.y = prop2.y - 1
 	end
-	if (prop2.x>=0 and prop2.x < screen2.width - picwidth and prop2.y >= 0 and prop2.y < screen2.height - picheight ) then
+	if (prop2.x>=0 and prop2.x < screen2.width - picwidth and prop2.y >= 0 and prop2.y < screen2.height - picheight) then
 		TASK_setProperty(pMITother, prop2)	
 	end
+
+
 	if count % 10 == 0 then
 		if NET_isListen() then
 			--dd=count+prop.x+prop.y+prop2.x+prop2.y
@@ -208,6 +235,16 @@ function execute(deltaT)
 		else
 			syslog(string.format("frame=%d (%d,%d) (%d,%d)",count,prop2.x,prop2.y,prop.x,prop.y))
 		end
+	end
+
+	--check collide
+	local rect1 = {prop.x, prop.y, picwidth, picheight}
+	local rect2 = {prop2.x, prop2.y, picwidth, picheight}
+	if (CheckRectCollide(rect1,rect2)) then
+		bcollide=true
+		propExplode = TASK_getProperty(pExplode)
+		propExplode.visible = true
+		TASK_setProperty(pExplode, propExplode)	
 	end
 
 end
