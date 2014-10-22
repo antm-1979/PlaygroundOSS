@@ -104,6 +104,7 @@ CSockReadStream::sock_listen(unsigned port)
      //   return(-1);
     //sa.sin_family = AF_INET;
     //sa.sin_port = htons(port);
+    //    return(-1);
     if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
         return(-1);
     struct sockaddr_in local;

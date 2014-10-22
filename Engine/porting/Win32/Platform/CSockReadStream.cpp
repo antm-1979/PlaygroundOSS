@@ -102,11 +102,11 @@ CSockReadStream::sock_listen(unsigned port)
 		//printf("bind() failed: %d\n", WSAGetLastError());
 		return SOCKET_ERROR;
 	}
-	::listen(sListen, 8);
+	::listen(sListen, 5);
 
 	u_long NonBlock;
-	while (1)
-	{
+	//while (1)
+	//{
 		iAddrSize = sizeof(client);
 		sClient = accept(sListen, (struct sockaddr *)&client,&iAddrSize);
 		if (sClient == INVALID_SOCKET)
@@ -124,7 +124,7 @@ CSockReadStream::sock_listen(unsigned port)
 		}
 		return sClient;
 
-	}
+	//}
 
 }
 

@@ -66,12 +66,12 @@ function setup()
 
 	bcollide = false
 	pExplodeList = {
-      "asset://explode_frame_0001.png.imag",
-      "asset://explode_frame_0002.png.imag",
-      "asset://explode_frame_0003.png.imag",
-      "asset://explode_frame_0004.png.imag",
-      "asset://explode_frame_0005.png.imag",
-      "asset://explode_frame_0006.png.imag"
+      "asset://explode/explode_frame_0001.png.imag",
+      "asset://explode/explode_frame_0002.png.imag",
+      "asset://explode/explode_frame_0003.png.imag",
+      "asset://explode/explode_frame_0004.png.imag",
+      "asset://explode/explode_frame_0005.png.imag",
+      "asset://explode/explode_frame_0006.png.imag"
 	}
 	pExplode = UI_MultiImgItem( nil, 8000, 0, 0, pExplodeList, 0)
 	propExplode = TASK_getProperty(pExplode)
