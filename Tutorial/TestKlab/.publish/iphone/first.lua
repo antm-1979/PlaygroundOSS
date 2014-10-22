@@ -25,8 +25,8 @@ end
 
 function OnListen()
 	sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"listen...")
-	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Listen",FORM_NODE_VISIBLE,false)
-	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Connect",FORM_NODE_VISIBLE,false)
+	--sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Listen",FORM_NODE_VISIBLE,false)
+	--sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Connect",FORM_NODE_VISIBLE,false)
 	syslog('----- OnListen() -----')
 	if (NET_listen(9581) ~= true) then
 		sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"listen error,port occypied?Restart system.")
@@ -40,8 +40,8 @@ end
 
 function OnConnect()
 	sysCommand(pForm, UI_FORM_UPDATE_NODE,"label_notify",FORM_TEXT_SET,"connecting...")
-	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Listen",FORM_NODE_VISIBLE,false)
-	sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Connect",FORM_NODE_VISIBLE,false)
+	--sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Listen",FORM_NODE_VISIBLE,false)
+	--sysCommand(pForm, UI_FORM_UPDATE_NODE,"button_Connect",FORM_NODE_VISIBLE,false)
 	syslog('----- OnConnect() -----')
 	str = sysCommand(pForm, UI_FORM_UPDATE_NODE,"textbox_target",FORM_TEXT_GET)
 	if (NET_connect(str,9581) ~= true) then
