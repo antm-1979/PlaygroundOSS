@@ -97,11 +97,11 @@ CSockReadStream::sock_listen(unsigned port)
     int    s;
     struct sockaddr_in sa;
     struct hostent *hp;
-    memset(&sa, 0, sizeof(struct sockaddr_in));
-    gethostname(myname, sizeof(myname));
-    hp = gethostbyname(myname);
-    if (hp == NULL)
-        return(-1);
+    //memset(&sa, 0, sizeof(struct sockaddr_in));
+    //gethostname(myname, sizeof(myname));
+    //hp = gethostbyname(myname);
+    //if (hp == NULL)
+    //    return(-1);
     sa.sin_family = hp->h_addrtype;
     sa.sin_port = htons(port);
     if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
