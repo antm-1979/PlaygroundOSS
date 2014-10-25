@@ -87,13 +87,19 @@ function CheckPointInRect(rect1,x,y)
 end
 
 function CheckRectCollide(rect1, rect2)
-	if (CheckPointInRect(rect1, rect2.x, rect2.y)) then return true end
-	if (CheckPointInRect(rect1, rect2.x + rect2.width, rect2.y)) then return true end
-	if (CheckPointInRect(rect1, rect2.x, rect2.y + rect2.height)) then return true end
-	if (CheckPointInRect(rect1, rect2.x + rect2.width, rect2.y + rect2.height)) then 
-		return true 
+	if (CheckPointInRect(rect1, rect2.x, rect2.y)) then
+		return rect2.x,rect2.y
 	end
-	return false
+	if (CheckPointInRect(rect1, rect2.x + rect2.width, rect2.y)) then 
+		return rect2.x + rect2.width, rect2.y 
+	end
+	if (CheckPointInRect(rect1, rect2.x, rect2.y + rect2.height)) then
+		return rect2.x, rect2.y + rect2.height
+	end
+	if (CheckPointInRect(rect1, rect2.x + rect2.width, rect2.y + rect2.height)) then 
+		return rect2.x + rect2.width, rect2.y + rect2.height
+	end
+	return nil,nil
 end
 
 
@@ -223,7 +229,7 @@ function execute(deltaT)
 		prop2.y = prop2.y - 1
 	end
 	if (prop2.x>=0 and prop2.x < screen2.width - picwidth and prop2.y >= 0 and prop2.y < screen2.height - picheight) then
-		TASK_setProperty(pMITother, prop2)	
+		TASK_setProperty(pMITother, prop2)
 	end
 
 
@@ -239,10 +245,14 @@ function execute(deltaT)
 	--check collide
 	local rect1 = {x=prop.x, y=prop.y, width=picwidth, height=picheight}
 	local rect2 = {x=prop2.x, y=prop2.y, width=picwidth, height=picheight}
-	if (CheckRectCollide(rect1,rect2)) then
+	local collidex,collidey
+	collidex,collide=CheckRectCollide(rect1,rect2)
+	if (colidex ~= nil) then
 		bcollide=true
 		propExplode = TASK_getProperty(pExplode)
 		propExplode.visible = true
+		propExplode.x = collidex
+		propExplode.y = collidey
 		TASK_setProperty(pExplode, propExplode)	
 	end
 
