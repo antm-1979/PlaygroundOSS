@@ -106,6 +106,8 @@ end
 function execute(deltaT)
 	--syslog(string.format("deltaT =%d",deltaT))
 	--syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
+	localQueue[(count+6)%12]=count % 4+1
+
 
 	local propExplode
 	if(bcollide) then
@@ -160,6 +162,7 @@ function execute(deltaT)
 		elseif (orientation == 3) then
 			bnorit = false
 		end
+		syslog(string.format("execute local queue = %d event = %d",count ,localQueue[nexec]))
 		localQueue[nexec] = 0
 	end
 	--animation
@@ -285,16 +288,16 @@ function callback_TP(tbl)
 			local nQueue = (count + 6) % 12
 			if centx >= 0 and fabcenty < centx then
 				localQueue[nQueue] = 1
-				syslog(string.format("execute local frame = %d event = %d",count + 6,1))
+				--syslog(string.format("execute local frame = %d event = %d",count + 6,1))
 			elseif centy >= 0 and centy > fabcentx then
 				localQueue[nQueue] = 2
-				syslog(string.format("execute local frame = %d event = %d",count + 6,2))
+				--syslog(string.format("execute local frame = %d event = %d",count + 6,2))
 			elseif centx < 0 and fabcenty < -centx then
 				localQueue[nQueue] = 3
-				syslog(string.format("execute local frame = %d event = %d",count + 6,3))
+				--syslog(string.format("execute local frame = %d event = %d",count + 6,3))
 			elseif centy<0 and -centy > fabcentx then
 				localQueue[nQueue] = 4
-				syslog(string.format("execute local frame = %d event = %d",count + 6,4))
+				--syslog(string.format("execute local frame = %d event = %d",count + 6,4))
 			end
 		end
 	end
