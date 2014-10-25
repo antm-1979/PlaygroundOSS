@@ -106,7 +106,7 @@ end
 function execute(deltaT)
 	--syslog(string.format("deltaT =%d",deltaT))
 	--syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
-	localQueue[(count+6)%12]=count % 4+1
+	--localQueue[(count+6)%12]=count % 4+1
 
 
 	local propExplode
