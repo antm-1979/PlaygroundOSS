@@ -106,7 +106,7 @@ end
 function execute(deltaT)
 	--syslog(string.format("deltaT =%d",deltaT))
 	--syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
-	localQueue[(count+6)%12]=count % 4+1
+	--localQueue[(count+6)%12]=count % 4+1
 
 
 	local propExplode
@@ -127,7 +127,7 @@ function execute(deltaT)
 			nremote = remoteEvt % 12
 			remoteQueue[nremote] = evtData
 			if evtData ~= 0 then
-				syslog(string.format("receive net event: remoteEvt=%d event=%d",remoteEvt,evtData))
+				--syslog(string.format("receive net event: remoteEvt=%d event=%d",remoteEvt,evtData))
 			end
 			remoteEvt = remoteEvt + 1
 		elseif(event == 2 ) then		--get peer screen width and height
@@ -162,7 +162,7 @@ function execute(deltaT)
 		elseif (orientation == 3) then
 			bnorit = false
 		end
-		syslog(string.format("execute local queue = %d event = %d",count ,localQueue[nexec]))
+		--syslog(string.format("execute local queue = %d event = %d",count ,localQueue[nexec]))
 		localQueue[nexec] = 0
 	end
 	--animation
