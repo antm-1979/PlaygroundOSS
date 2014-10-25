@@ -183,13 +183,6 @@
       <extraXmlFileSize>0</extraXmlFileSize>
     </Entry>
     <Entry>
-      <resourcePath>first.lua</resourcePath>
-      <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
-      <resourceFileSize>0</resourceFileSize>
-      <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
-      <extraXmlFileSize>0</extraXmlFileSize>
-    </Entry>
-    <Entry>
       <id>44b66eae-8047-4fa7-9939-dd5b8f789cb1</id>
       <resourcePath>walk_frame_0002.png</resourcePath>
       <resourceLastModified>2014-10-18T10:13:43.034109+08:00</resourceLastModified>
@@ -247,6 +240,13 @@
     </Entry>
     <Entry>
       <resourcePath>MultiImgItem.lua</resourcePath>
+      <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
+      <resourceFileSize>0</resourceFileSize>
+      <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>
+      <extraXmlFileSize>0</extraXmlFileSize>
+    </Entry>
+    <Entry>
+      <resourcePath>first.lua</resourcePath>
       <resourceLastModified>0001-01-01T00:00:00</resourceLastModified>
       <resourceFileSize>0</resourceFileSize>
       <extraXmlLastModified>0001-01-01T00:00:00</extraXmlLastModified>

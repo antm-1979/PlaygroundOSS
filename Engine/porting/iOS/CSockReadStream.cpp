@@ -93,24 +93,38 @@ CSockReadStream::sock_connect(const char *hostname, int port)
 int
 CSockReadStream::sock_listen(unsigned port)
 {
-    char   myname[129];
+    //char   myname[129];
     int    s;
-    struct sockaddr_in sa;
-    struct hostent *hp;
-    memset(&sa, 0, sizeof(struct sockaddr_in));
-    gethostname(myname, sizeof(myname));
-    hp = gethostbyname(myname);
-    if (hp == NULL)
-        return(-1);
-    sa.sin_family = hp->h_addrtype;
-    sa.sin_port = htons(port);
+    //struct sockaddr_in sa;
+    //struct hostent *hp;
+    //memset(&sa, 0, sizeof(struct sockaddr_in));
+    //gethostname(myname, sizeof(myname));
+    //hp = gethostbyname(myname);
+    //if (hp == NULL)
+     //   return(-1);
+    //sa.sin_family = AF_INET;
+    //sa.sin_port = htons(port);
+    //    return(-1);
     if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
         return(-1);
-    if (bind(s, (sockaddr *)&sa, sizeof(struct sockaddr_in)) < 0) {
+    struct sockaddr_in local;
+    local.sin_addr.s_addr = htonl(INADDR_ANY);
+    
+    local.sin_family = AF_INET;
+    local.sin_port = htons(port);
+
+    if (bind(s, (sockaddr *)&local, sizeof(struct sockaddr_in)) < 0) {
+        CPFInterface::getInstance().platform().logging("errno = %d", errno);
         close(s);
         return(-1);
     }
-    ::listen(s, 5);
+    if (::listen(s, 5) < 0)
+    {
+        CPFInterface::getInstance().platform().logging("errno = %d", errno);
+        close(s);
+        return(-1);
+    }
+    
     int t;
 //    for (unsigned i = 0; hp->h_addr_list[i]; i++)
 //    {
@@ -119,9 +133,16 @@ CSockReadStream::sock_listen(unsigned port)
 //        sprintf(buf, "%s", ip);
 //        t = t;
 //    }
-    if ((t = accept(s, NULL, NULL)) < 0)
-        return(-1);
-
+    for(;;)
+    {
+        if ((t = accept(s, NULL, NULL)) < 0)
+        {
+            CPFInterface::getInstance().platform().logging("errno = %d", errno);
+            close(s);
+            return(-1);
+        }
+    }
+    
     int flags = fcntl(t, F_GETFL, 0);
     fcntl(t, F_SETFL, flags | O_NONBLOCK);
 

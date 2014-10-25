@@ -66,12 +66,12 @@ function setup()
 
 	bcollide = false
 	pExplodeList = {
-      "asset://explode_frame_0001.png.imag",
-      "asset://explode_frame_0002.png.imag",
-      "asset://explode_frame_0003.png.imag",
-      "asset://explode_frame_0004.png.imag",
-      "asset://explode_frame_0005.png.imag",
-      "asset://explode_frame_0006.png.imag"
+      "asset://explode/explode_frame_0001.png.imag",
+      "asset://explode/explode_frame_0002.png.imag",
+      "asset://explode/explode_frame_0003.png.imag",
+      "asset://explode/explode_frame_0004.png.imag",
+      "asset://explode/explode_frame_0005.png.imag",
+      "asset://explode/explode_frame_0006.png.imag"
 	}
 	pExplode = UI_MultiImgItem( nil, 8000, 0, 0, pExplodeList, 0)
 	propExplode = TASK_getProperty(pExplode)
@@ -106,10 +106,9 @@ function execute(deltaT)
 	if(bcollide) then
 		propExplode = TASK_getProperty(pExplode)
 		if(propExplode.index < 6) then
-			propExplode.index = (propExplode.index + 1)
+			sysCommand(pExplode, UI_MULTIIMG_SET_INDEX, propExplode.index + 1)
 		end
-		sysCommand(pMIT, UI_MULTIIMG_SET_INDEX, idx)
-	return
+		return
 	end
 	local nremote
 	while remoteEvt < count + 13 do
@@ -238,8 +237,8 @@ function execute(deltaT)
 	end
 
 	--check collide
-	local rect1 = {prop.x, prop.y, picwidth, picheight}
-	local rect2 = {prop2.x, prop2.y, picwidth, picheight}
+	local rect1 = {x=prop.x, y=prop.y, width=picwidth, height=picheight}
+	local rect2 = {x=prop2.x, y=prop2.y, width=picwidth, height=picheight}
 	if (CheckRectCollide(rect1,rect2)) then
 		bcollide=true
 		propExplode = TASK_getProperty(pExplode)
