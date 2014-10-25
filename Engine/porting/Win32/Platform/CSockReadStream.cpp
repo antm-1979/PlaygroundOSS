@@ -89,7 +89,6 @@ CSockReadStream::sock_listen(unsigned port)
 	sListen = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
 	if (sListen == SOCKET_ERROR)
 	{
-		//printf("socket() failed: %d\n", WSAGetLastError());
 		return SOCKET_ERROR;
 	}
 
@@ -99,32 +98,36 @@ CSockReadStream::sock_listen(unsigned port)
 
 	if (bind(sListen, (struct sockaddr *)&local,sizeof(local)) == SOCKET_ERROR)
 	{
-		//printf("bind() failed: %d\n", WSAGetLastError());
+		CPFInterface::getInstance().platform().logging("bind failed = %d", WSAGetLastError());
+		closesocket(m_fd);
 		return SOCKET_ERROR;
 	}
-	::listen(sListen, 5);
+
+	if (::listen(sListen, 5) == SOCKET_ERROR)
+	{
+		CPFInterface::getInstance().platform().logging("listen failed = %d", WSAGetLastError());
+		closesocket(sListen);
+		return SOCKET_ERROR;
+	}
 
 	u_long NonBlock;
-	//while (1)
-	//{
-		iAddrSize = sizeof(client);
-		sClient = accept(sListen, (struct sockaddr *)&client,&iAddrSize);
-		if (sClient == INVALID_SOCKET)
-		{
-			//printf("accept() failed: %d\n", WSAGetLastError());
-			return SOCKET_ERROR;
-		}
-		//printf("Accepted client: %s:%d\n",
-		//	inet_ntoa(client.sin_addr), ntohs(client.sin_port));
-		NonBlock = 1;
-		if (ioctlsocket(sClient, FIONBIO, &NonBlock) == SOCKET_ERROR)
-		{
-			//printf("ioctlsocket() failed with error %d\n", WSAGetLastError());
-			return SOCKET_ERROR;
-		}
-		return sClient;
-
-	//}
+	iAddrSize = sizeof(client);
+	sClient = accept(sListen, (struct sockaddr *)&client, &iAddrSize);
+	if (sClient == INVALID_SOCKET)
+	{
+		CPFInterface::getInstance().platform().logging("accept failed = %d", WSAGetLastError());
+		closesocket(sListen);
+		return SOCKET_ERROR;
+	}
+	//	inet_ntoa(client.sin_addr), ntohs(client.sin_port));
+	NonBlock = 1;
+	if (ioctlsocket(sClient, FIONBIO, &NonBlock) == SOCKET_ERROR)
+	{
+		CPFInterface::getInstance().platform().logging("accept failed error = %d", WSAGetLastError());
+		closesocket(sListen);
+		return SOCKET_ERROR;
+	}
+	return sClient;
 
 }
 
