@@ -145,7 +145,7 @@ function execute(deltaT)
 	--send local event to peer
 	local nwriteevent = (count + 5) % 12
 	NET_writeEvent(1,localQueue[nwriteevent])
-	if localQueue[nwriteevent] then
+	if localQueue[nwriteevent] ~=0 then
 		syslog(string.format("write event to net frame = %d event = %d",count + 5,localQueue[nwriteevent]))
 	end
 
