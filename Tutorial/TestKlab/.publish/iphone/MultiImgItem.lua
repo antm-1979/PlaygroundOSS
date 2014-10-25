@@ -88,9 +88,9 @@ end
 
 function CheckRectCollide(rect1, rect2)
 	if (CheckPointInRect(rect1, rect2.x, rect2.y)) then return true end
-	if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y)) then return true end
+	if (CheckPointInRect(rect1, rect2.x + rect2.width, rect2.y)) then return true end
 	if (CheckPointInRect(rect1, rect2.x, rect2.y + rect2.height)) then return true end
-	if (CheckPointInRect(rect1, rect2.x + rect.width, rect2.y + rect2.height)) then 
+	if (CheckPointInRect(rect1, rect2.x + rect2.width, rect2.y + rect2.height)) then 
 		return true 
 	end
 	return false
