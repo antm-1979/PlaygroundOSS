@@ -107,7 +107,6 @@ function execute(deltaT)
 	--syslog(string.format("deltaT =%d",deltaT))
 	--syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
 
-	--read net event
 	local propExplode
 	if(bcollide) then
 		propExplode = TASK_getProperty(pExplode)
@@ -116,6 +115,8 @@ function execute(deltaT)
 		end
 		return
 	end
+
+	--read net event
 	local nremote
 	while remoteEvt < count + 13 do
 		bhasEvent,event,evtData = NET_readEvent()
@@ -123,6 +124,9 @@ function execute(deltaT)
 		if (event == 1) then			--change orientation
 			nremote = remoteEvt % 12
 			remoteQueue[nremote] = evtData
+			if evtData ~= 0 then
+				syslog(string.format("receive net event: remoteEvt=%d event=%d",remoteEvt,evtData))
+			end
 			remoteEvt = remoteEvt + 1
 		elseif(event == 2 ) then		--get peer screen width and height
 			screen2.width = math.floor(evtData / 65536)
@@ -141,13 +145,13 @@ function execute(deltaT)
 	--send local event to peer
 	local nwriteevent = (count + 5) % 12
 	NET_writeEvent(1,localQueue[nwriteevent])
-
-	--syslog(string.format("write event to net nwriteevent=%d",nwriteevent))
+	if localQueue[nwriteevent] then
+		syslog(string.format("write event to net frame = %d event = %d",count + 5,localQueue[nwriteevent]))
+	end
 
 	local idx
 	local prop
-	--local item
-	--animation
+	--execute local queue
 	local nexec = count % 12
 	if (localQueue[nexec] ~= 0) then
 		orientation = localQueue[nexec]
@@ -158,6 +162,7 @@ function execute(deltaT)
 		end
 		localQueue[nexec] = 0
 	end
+	--animation
 	if count % 3 == 0 then
 		prop = TASK_getProperty(pMIT)
 		idx = prop.index
@@ -189,7 +194,7 @@ function execute(deltaT)
 		TASK_setProperty(pMIT, prop)	
 	end
 
-	--peer item controlled from net
+	--execute remote queue
 	if (remoteQueue[nexec] ~= 0) then
 		orientation2 = remoteQueue[nexec]
 		if (orientation2 == 1) then
@@ -280,12 +285,16 @@ function callback_TP(tbl)
 			local nQueue = (count + 6) % 12
 			if centx >= 0 and fabcenty < centx then
 				localQueue[nQueue] = 1
+				syslog(string.format("execute local frame = %d event = %d",count + 6,1))
 			elseif centy >= 0 and centy > fabcentx then
 				localQueue[nQueue] = 2
+				syslog(string.format("execute local frame = %d event = %d",count + 6,2))
 			elseif centx < 0 and fabcenty < -centx then
 				localQueue[nQueue] = 3
+				syslog(string.format("execute local frame = %d event = %d",count + 6,3))
 			elseif centy<0 and -centy > fabcentx then
 				localQueue[nQueue] = 4
+				syslog(string.format("execute local frame = %d event = %d",count + 6,4))
 			end
 		end
 	end
