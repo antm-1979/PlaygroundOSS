@@ -146,7 +146,7 @@ s32 CKLBLuaLibNET::luaRead(lua_State * L)
 	{
 		if (len > 4096)
 			len = 4096;
-		m_preadStream->readBlock(data, len);
+		m_preadStream->readBlock(data, 8);
 		lua.retBoolean(true);
 		lua.retInt(*(int *)data);
 		lua.retInt(*(int *)(data + 4));
