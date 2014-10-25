@@ -296,6 +296,7 @@
 		EB40320519F4A34100FAFDB4 /* walk_frame_0012.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EB4031EB19F4A34100FAFDB4 /* walk_frame_0012.png.imag */; };
 		EB40320619F4A34100FAFDB4 /* walk_frame_0013.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EB4031EC19F4A34100FAFDB4 /* walk_frame_0013.png.imag */; };
 		EB40320719F4A34100FAFDB4 /* walk_frame_0014.png.imag in Resources */ = {isa = PBXBuildFile; fileRef = EB4031ED19F4A34100FAFDB4 /* walk_frame_0014.png.imag */; };
+		EBB4313B19FB4F8B00B8E0DD /* explode in Resources */ = {isa = PBXBuildFile; fileRef = EBB4313A19FB4F8B00B8E0DD /* explode */; };
 		EBBEAEBF19F2537100C0E70D /* CKLBLuaLibNET.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBBEAEBD19F2537100C0E70D /* CKLBLuaLibNET.cpp */; };
 		FC6CF6F116DEF37B0098802F /* encryptFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC6CF6F016DEF37B0098802F /* encryptFile.cpp */; };
 		FCCFA67816A933F1001FAE7B /* glWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCCFA67616A933F1001FAE7B /* glWrapper.cpp */; };
@@ -898,6 +899,7 @@
 		EB4031EB19F4A34100FAFDB4 /* walk_frame_0012.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; name = walk_frame_0012.png.imag; path = ../../../../../Tutorial/TestKlab/.publish/iphone/walk_frame_0012.png.imag; sourceTree = "<group>"; };
 		EB4031EC19F4A34100FAFDB4 /* walk_frame_0013.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; name = walk_frame_0013.png.imag; path = ../../../../../Tutorial/TestKlab/.publish/iphone/walk_frame_0013.png.imag; sourceTree = "<group>"; };
 		EB4031ED19F4A34100FAFDB4 /* walk_frame_0014.png.imag */ = {isa = PBXFileReference; lastKnownFileType = file; name = walk_frame_0014.png.imag; path = ../../../../../Tutorial/TestKlab/.publish/iphone/walk_frame_0014.png.imag; sourceTree = "<group>"; };
+		EBB4313A19FB4F8B00B8E0DD /* explode */ = {isa = PBXFileReference; lastKnownFileType = folder; name = explode; path = ../../../../../Tutorial/TestKlab/.publish/iphone/explode; sourceTree = "<group>"; };
 		EBBEAEBD19F2537100C0E70D /* CKLBLuaLibNET.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CKLBLuaLibNET.cpp; path = ../../../../source/LuaLib/CKLBLuaLibNET.cpp; sourceTree = "<group>"; };
 		EBBEAEBE19F2537100C0E70D /* CKLBLuaLibNET.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKLBLuaLibNET.h; path = ../../../../source/LuaLib/CKLBLuaLibNET.h; sourceTree = "<group>"; };
 		FC6CF6F016DEF37B0098802F /* encryptFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = encryptFile.cpp; sourceTree = "<group>"; };
@@ -1425,6 +1427,7 @@
 		8E3CEEF8152C3775008C7EC1 /* ProjectResources */ = {
 			isa = PBXGroup;
 			children = (
+				EBB4313A19FB4F8B00B8E0DD /* explode */,
 				EB4031D419F4A34100FAFDB4 /* Alex Brush SIL OFL Font License 1.1.txt */,
 				EB4031D519F4A34100FAFDB4 /* AlexBrush-Regular-OTF.otf */,
 				EB4031D619F4A34100FAFDB4 /* arrow.png.imag */,
@@ -2067,6 +2070,7 @@
 				8E0A29FA14D12A6E007E98B3 /* ViewController_iPhone.xib in Resources */,
 				EB40320419F4A34100FAFDB4 /* walk_frame_0011.png.imag in Resources */,
 				EB40320319F4A34100FAFDB4 /* walk_frame_0010.png.imag in Resources */,
+				EBB4313B19FB4F8B00B8E0DD /* explode in Resources */,
 				8E0A29FD14D12A6E007E98B3 /* ViewController_iPad.xib in Resources */,
 				EB4031EF19F4A34100FAFDB4 /* AlexBrush-Regular-OTF.otf in Resources */,
 				EB4031FC19F4A34100FAFDB4 /* walk_frame_0003.png.imag in Resources */,

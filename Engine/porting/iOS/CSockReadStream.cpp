@@ -133,7 +133,7 @@ CSockReadStream::sock_listen(unsigned port)
 //        sprintf(buf, "%s", ip);
 //        t = t;
 //    }
-    for(;;)
+    //for(;;)
     {
         if ((t = accept(s, NULL, NULL)) < 0)
         {
