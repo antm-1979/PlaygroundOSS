@@ -246,8 +246,8 @@ function execute(deltaT)
 	local rect1 = {x=prop.x, y=prop.y, width=picwidth, height=picheight}
 	local rect2 = {x=prop2.x, y=prop2.y, width=picwidth, height=picheight}
 	local collidex,collidey
-	collidex,collide=CheckRectCollide(rect1,rect2)
-	if (colidex ~= nil) then
+	collidex,collidey = CheckRectCollide(rect1,rect2)
+	if (collidex ~= nil) then
 		bcollide=true
 		propExplode = TASK_getProperty(pExplode)
 		propExplode.visible = true
