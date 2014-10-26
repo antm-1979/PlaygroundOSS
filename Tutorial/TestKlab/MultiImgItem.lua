@@ -161,7 +161,7 @@ function execute(deltaT)
 		elseif (orientation == 3) then
 			bnorit = false
 		end
-		syslog(string.format("execute local queue = %d event = %d",count ,localQueue[nexec]))
+		--syslog(string.format("execute local queue = %d event = %d",count ,localQueue[nexec]))
 		localQueue[nexec] = 0
 	end
 	--animation
@@ -204,7 +204,7 @@ function execute(deltaT)
 		elseif (orientation2 == 3) then
 			bnorit2 = false
 		end
-		syslog(string.format("execute remote queue = %d event = %d",count ,localQueue[nexec]))
+		--syslog(string.format("execute remote queue = %d event = %d",count ,localQueue[nexec]))
 		remoteQueue[nexec] = 0
 	end
 	--animation
@@ -242,11 +242,11 @@ function execute(deltaT)
 
 
 	--if count % 10 == 0 then
-		if NET_isListen() then
-			syslog(string.format("frame=%d  (%d,%d) (%d,%d)",count,prop.x,prop.y,prop2.x,prop2.y))
-		else
-			syslog(string.format("frame=%d (%d,%d) (%d,%d)",count,prop2.x,prop2.y,prop.x,prop.y))
-		end
+		--if NET_isListen() then
+		--	syslog(string.format("frame=%d  (%d,%d) (%d,%d)",count,prop.x,prop.y,prop2.x,prop2.y))
+		--else
+		--	syslog(string.format("frame=%d (%d,%d) (%d,%d)",count,prop2.x,prop2.y,prop.x,prop.y))
+		--end
 	--end
 
 	--check collide
@@ -261,7 +261,7 @@ function execute(deltaT)
 		propExplode.x = collidex - 64
 		propExplode.y = collidey - 64
 		TASK_setProperty(pExplode, propExplode)
-		syslog(string.format("frame = %d collide position = (%d,%d)",count,propExplode.x,propExplode.y))
+		--syslog(string.format("frame = %d collide position = (%d,%d)",count,propExplode.x,propExplode.y))
 	end
 
 end
