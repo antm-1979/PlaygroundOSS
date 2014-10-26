@@ -161,7 +161,7 @@ function execute(deltaT)
 		elseif (orientation == 3) then
 			bnorit = false
 		end
-		--syslog(string.format("execute local queue = %d event = %d",count ,localQueue[nexec]))
+		syslog(string.format("execute local queue = %d event = %d",count ,localQueue[nexec]))
 		localQueue[nexec] = 0
 	end
 	--animation
@@ -241,13 +241,13 @@ function execute(deltaT)
 	end
 
 
-	if count % 10 == 0 then
+	--if count % 10 == 0 then
 		if NET_isListen() then
 			syslog(string.format("frame=%d  (%d,%d) (%d,%d)",count,prop.x,prop.y,prop2.x,prop2.y))
 		else
 			syslog(string.format("frame=%d (%d,%d) (%d,%d)",count,prop2.x,prop2.y,prop.x,prop.y))
 		end
-	end
+	--end
 
 	--check collide
 	local rect1 = {x=prop.x, y=prop.y, width=picwidth, height=picheight}
