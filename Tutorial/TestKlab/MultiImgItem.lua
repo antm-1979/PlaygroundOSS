@@ -108,7 +108,6 @@ function execute(deltaT)
 	--syslog(string.format("count = %d,remoteEvt = %d",count,remoteEvt))
 	--localQueue[(count+6)%12]=count % 4+1
 
-
 	local propExplode
 	if(bcollide) then
 		propExplode = TASK_getProperty(pExplode)
@@ -244,7 +243,6 @@ function execute(deltaT)
 
 	if count % 10 == 0 then
 		if NET_isListen() then
-			--dd=count+prop.x+prop.y+prop2.x+prop2.y
 			syslog(string.format("frame=%d  (%d,%d) (%d,%d)",count,prop.x,prop.y,prop2.x,prop2.y))
 		else
 			syslog(string.format("frame=%d (%d,%d) (%d,%d)",count,prop2.x,prop2.y,prop.x,prop.y))
@@ -260,9 +258,10 @@ function execute(deltaT)
 		bcollide=true
 		propExplode = TASK_getProperty(pExplode)
 		propExplode.visible = true
-		propExplode.x = collidex
-		propExplode.y = collidey
-		TASK_setProperty(pExplode, propExplode)	
+		propExplode.x = collidex - 64
+		propExplode.y = collidey - 64
+		TASK_setProperty(pExplode, propExplode)
+		syslog(string.format("frame = %d collide position = (%d,%d)",count,propExplode.x,propExplode.y))
 	end
 
 end
@@ -289,16 +288,12 @@ function callback_TP(tbl)
 			local nQueue = (count + 6) % 12
 			if centx >= 0 and fabcenty < centx then
 				localQueue[nQueue] = 1
-				--syslog(string.format("execute local frame = %d event = %d",count + 6,1))
 			elseif centy >= 0 and centy > fabcentx then
 				localQueue[nQueue] = 2
-				--syslog(string.format("execute local frame = %d event = %d",count + 6,2))
 			elseif centx < 0 and fabcenty < -centx then
 				localQueue[nQueue] = 3
-				--syslog(string.format("execute local frame = %d event = %d",count + 6,3))
 			elseif centy<0 and -centy > fabcentx then
 				localQueue[nQueue] = 4
-				--syslog(string.format("execute local frame = %d event = %d",count + 6,4))
 			end
 		end
 	end
