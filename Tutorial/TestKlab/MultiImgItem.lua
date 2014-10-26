@@ -81,8 +81,8 @@ end
 
 
 function CheckPointInRect(rect1,x,y)
-	if (x < rect1.x or x >= rect1.x + rect1.width) then return false end
-	if (y < rect1.y or y >= rect1.y + rect1.height) then return false end
+	if (x <= rect1.x or x >= rect1.x + rect1.width) then return false end
+	if (y <= rect1.y or y >= rect1.y + rect1.height) then return false end
 	return true
 end
 
